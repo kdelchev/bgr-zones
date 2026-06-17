@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BGR Drone Zones (ED-269)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js"
+  integrity="sha384-DT0Ls0mO7JmjTnT+oBuMhEJzYJO1zUqzuuMXNdnOmOQRIpN2BgSjvBV/j50NngIT" crossorigin="anonymous"></script>
+<style>
+  html, body { margin: 0; height: 100%; font: 14px/1.4 system-ui, sans-serif; }
+  #bar {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    padding: 8px 12px; background: #1f2937; color: #fff; box-shadow: 0 1px 4px #0005;
+  }
+  #bar b { font-size: 15px; }
+  #bar #status { color: #cbd5e1; flex: 1 1 220px; min-width: 160px; }
+  #bar.error #status { color: #fca5a5; }
+  #bar button, #bar label.btn {
+    background: #374151; color: #fff; border: 1px solid #4b5563; border-radius: 5px;
+    padding: 5px 10px; cursor: pointer; font: inherit;
+  }
+  #bar button:hover, #bar label.btn:hover { background: #4b5563; }
+  #bar a { color: #93c5fd; }
+  #map { height: calc(100% - 49px); }
+  #drophint {
+    position: absolute; inset: 49px 0 0 0; display: none; z-index: 1000;
+    align-items: center; justify-content: center; pointer-events: none;
+    background: #1f2937cc; color: #fff; font-size: 20px;
+  }
+  body.dragging #drophint { display: flex; }
+  .legend { background: #fff; padding: 8px 10px; border-radius: 6px; box-shadow: 0 1px 4px #0003; }
+  .legend b { display: block; margin-bottom: 4px; }
+  .legend .warn { color: #b45309; margin-top: 4px; font-size: 12px; }
+</style>
+</head>
+<body>
+<div id="bar">
+  <b>BGR Drone Zones — ED-269</b>
+  <span id="status">Starting…</span>
+  <button id="reload" title="Re-fetch the latest file">Reload latest</button>
+  <label class="btn">Open file…<input id="file" type="file" accept=".zip,.json" hidden></label>
+  <a href="https://www.caa.bg/bg/category/633/7062" target="_blank" rel="noopener">CAA source ↗</a>
+</div>
+<div id="map"></div>
+<div id="drophint">Drop a .zip or .json file to visualize</div>
+
+<script>
+"use strict";
+
+// --- Config: deployed Cloudflare Worker URL. Override per-load with ?worker=https://... ---
+const DEFAULT_WORKER_URL = "https://bgr-zones.kdelchev.workers.dev/"; // e.g. "https://bgr-zones.<your-subdomain>.workers.dev"
+const WORKER_URL = new URLSearchParams(location.search).get("worker") || DEFAULT_WORKER_URL;
+
+// --- Restriction → color ---
+const COLORS = { PROHIBITED: "#d7191c", REQ_AUTHORISATION: "#fdae61", CONDITIONAL: "#f7e043" };
+const colorFor = (r) => COLORS[r] || "#3388ff";
+
+// --- Coordinate sanity: Bulgaria + neighbors box. Fix lat/lon transpositions; flag true outliers. ---
+const inBox = (lon, lat) => lon >= 21 && lon <= 30 && lat >= 40.5 && lat <= 45;
+
+const escapeHtml = (s) => String(s)
+  .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+// Parse an ED-269 document into render-ready zones (Leaflet [lat,lon] order).
+function normalize(raw) {
+  const features = Array.isArray(raw.features) ? raw.features : [];
+  const zones = [];
+  const corrected = new Set();
+  const outliers = new Set();
+  const fix = (lon, lat, id) => {
+    if (inBox(lon, lat)) return [lon, lat];
+    if (inBox(lat, lon)) { corrected.add(id); return [lat, lon]; }
+    outliers.add(id);
+    return [lon, lat];
+  };
+  for (const f of features) {
+    const g = f.geometry && f.geometry[0];
+    const hp = g && g.horizontalProjection;
+    if (!hp) continue;
+    const z = {
+      identifier: f.identifier || "", name: f.name || "", type: f.type || "",
+      restriction: f.restriction || "", reason: Array.isArray(f.reason) ? f.reason : [],
+      otherReasonInfo: f.otherReasonInfo || "", uSpaceClass: f.uSpaceClass || "",
+      message: f.message || "", lowerLimit: g.lowerLimit, upperLimit: g.upperLimit,
+      lowerRef: g.lowerVerticalReference || "", upperRef: g.upperVerticalReference || "",
+      uom: g.uomDimensions || "M", color: colorFor(f.restriction),
+    };
+    if (hp.type === "Circle" && Array.isArray(hp.center)) {
+      const [lon, lat] = fix(hp.center[0], hp.center[1], z.identifier);
+      zones.push({ ...z, shape: "circle", lat, lon, radius: hp.radius });
+    } else if (hp.type === "Polygon" && Array.isArray(hp.coordinates)) {
+      const rings = hp.coordinates.map((ring) =>
+        ring.map(([lon, lat]) => { const p = fix(lon, lat, z.identifier); return [p[1], p[0]]; }));
+      zones.push({ ...z, shape: "polygon", rings });
+    }
+  }
+  return { zones, corrected: [...corrected], outliers: [...outliers], title: raw.title || "BGR zones" };
+}
+
+function popupHtml(z) {
+  const band = z.lowerLimit != null && z.upperLimit != null
+    ? `${z.lowerLimit}–${z.upperLimit} ${z.uom} (${z.lowerRef || "?"}→${z.upperRef || "?"})` : "";
+  const rows = [
+    ["ID", z.identifier], ["Name", z.name], ["Type", z.type], ["Restriction", z.restriction],
+    ["Reason", z.reason.join(", ")], ["Other", z.otherReasonInfo], ["U-space", z.uSpaceClass],
+    ["Vertical", band], z.shape === "circle" ? ["Radius", `${z.radius} m`] : null, ["Message", z.message],
+  ].filter((r) => r && r[1] !== "" && r[1] != null);
+  const trs = rows.map(([k, v]) =>
+    `<tr><th style="text-align:left;padding-right:8px;vertical-align:top;white-space:nowrap">${escapeHtml(k)}</th><td>${escapeHtml(v)}</td></tr>`).join("");
+  return `<table style="font:12px/1.4 system-ui,sans-serif;max-width:320px">${trs}</table>`;
+}
+
+// --- Map setup ---
+const map = L.map("map").setView([42.7, 25.3], 7); // valid view before first render
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19, attribution: "&copy; OpenStreetMap contributors",
+}).addTo(map);
+
+let activeGroups = [];
+let layerControl = null;
+let legendControl = null;
+
+function setStatus(text, isError) {
+  document.getElementById("status").textContent = text;
+  document.getElementById("bar").classList.toggle("error", !!isError);
+}
+
+function render(rawEd269) {
+  const { zones, corrected, outliers, title } = normalize(rawEd269);
+  if (!zones.length) throw new Error("No drawable zones found in this file");
+
+  // Clear any previous render.
+  activeGroups.forEach((g) => map.removeLayer(g));
+  activeGroups = [];
+  if (layerControl) { map.removeControl(layerControl); layerControl = null; }
+
+  const groups = {};
+  const counts = {};
+  let minLat = 90, maxLat = -90, minLon = 180, maxLon = -180;
+  const ext = (la, lo) => {
+    if (la < minLat) minLat = la; if (la > maxLat) maxLat = la;
+    if (lo < minLon) minLon = lo; if (lo > maxLon) maxLon = lo;
+  };
+
+  for (const z of zones) {
+    counts[z.restriction] = (counts[z.restriction] || 0) + 1;
+    const style = { color: z.color, weight: 1, fillColor: z.color, fillOpacity: 0.35 };
+    let layer;
+    if (z.shape === "circle") {
+      layer = L.circle([z.lat, z.lon], { radius: z.radius, ...style });
+      const dLat = z.radius / 111320;
+      const dLon = z.radius / (111320 * Math.cos((z.lat * Math.PI) / 180));
+      ext(z.lat - dLat, z.lon - dLon); ext(z.lat + dLat, z.lon + dLon);
+    } else {
+      layer = L.polygon(z.rings, style);
+      for (const ring of z.rings) for (const [la, lo] of ring) ext(la, lo);
+    }
+    layer.bindPopup(popupHtml(z));
+    (groups[z.restriction] = groups[z.restriction] || L.layerGroup().addTo(map)).addLayer(layer);
+  }
+
+  activeGroups = Object.values(groups);
+  map.fitBounds([[minLat, minLon], [maxLat, maxLon]], { padding: [20, 20] });
+  layerControl = L.control.layers(null, groups, { collapsed: false }).addTo(map);
+  updateLegend(title, zones.length, counts, corrected, outliers);
+
+  let msg = `${title} — ${zones.length} zones`;
+  if (corrected.length) msg += ` · fixed ${corrected.length} transposed`;
+  if (outliers.length) msg += ` · ${outliers.length} out-of-region (kept)`;
+  setStatus(msg, false);
+}
+
+function updateLegend(title, total, counts, corrected, outliers) {
+  if (legendControl) map.removeControl(legendControl);
+  legendControl = L.control({ position: "bottomright" });
+  legendControl.onAdd = () => {
+    const div = L.DomUtil.create("div", "legend");
+    const rows = Object.keys(COLORS).map((k) =>
+      `<div><span style="display:inline-block;width:12px;height:12px;background:${COLORS[k]};border:1px solid #0006;margin-right:6px"></span>${k} (${counts[k] || 0})</div>`).join("");
+    let warn = "";
+    if (corrected.length) warn += `<div class="warn">Fixed transposition: ${corrected.join(", ")}</div>`;
+    if (outliers.length) warn += `<div class="warn">Out-of-region (verify): ${outliers.join(", ")}</div>`;
+    div.innerHTML = `<b>${escapeHtml(title)} — ${total} zones</b>${rows}${warn}`;
+    return div;
+  };
+  legendControl.addTo(map);
+}
+
+// --- Data loading ---
+function jsonFromZip(buf) {
+  const files = window.fflate.unzipSync(new Uint8Array(buf));
+  const name = Object.keys(files).find((n) => n.toLowerCase().endsWith(".json"));
+  if (!name) throw new Error("No .json entry inside the zip");
+  return JSON.parse(new TextDecoder("utf-8").decode(files[name]));
+}
+
+async function loadFromWorker() {
+  setStatus("Loading latest from CAA…");
+  const res = await fetch(WORKER_URL, { cache: "no-store" });
+  if (!res.ok) throw new Error(`proxy ${res.status}: ${(await res.text()).slice(0, 160)}`);
+  render(jsonFromZip(await res.arrayBuffer()));
+}
+
+async function loadFromFile(file) {
+  setStatus(`Reading ${file.name}…`);
+  const buf = await file.arrayBuffer();
+  const data = file.name.toLowerCase().endsWith(".zip")
+    ? jsonFromZip(buf)
+    : JSON.parse(new TextDecoder("utf-8").decode(new Uint8Array(buf)));
+  render(data);
+}
+
+// --- Wire up UI ---
+document.getElementById("reload").addEventListener("click", () => {
+  if (!WORKER_URL) { setStatus("No Worker URL configured — open a file instead.", true); return; }
+  loadFromWorker().catch((e) => setStatus(`Reload failed: ${e.message}`, true));
+});
+document.getElementById("file").addEventListener("change", (e) => {
+  const f = e.target.files[0];
+  if (f) loadFromFile(f).catch((err) => setStatus(`Could not read file: ${err.message}`, true));
+});
+
+// Drag & drop anywhere on the page.
+let dragDepth = 0;
+window.addEventListener("dragenter", (e) => { e.preventDefault(); if (dragDepth++ === 0) document.body.classList.add("dragging"); });
+window.addEventListener("dragover", (e) => e.preventDefault());
+window.addEventListener("dragleave", (e) => { e.preventDefault(); if (--dragDepth <= 0) { dragDepth = 0; document.body.classList.remove("dragging"); } });
+window.addEventListener("drop", (e) => {
+  e.preventDefault(); dragDepth = 0; document.body.classList.remove("dragging");
+  const f = e.dataTransfer.files[0];
+  if (f) loadFromFile(f).catch((err) => setStatus(`Could not read file: ${err.message}`, true));
+});
+
+// --- Initial load ---
+if (WORKER_URL) {
+  loadFromWorker().catch((e) =>
+    setStatus(`Auto-load failed (${e.message}). Drop a .zip/.json or click "Open file…".`, true));
+} else {
+  setStatus('Set the Worker URL (or use ?worker=…) to auto-load, or drop / open a .zip / .json file.', true);
+}
+</script>
+</body>
+</html>

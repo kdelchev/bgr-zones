@@ -1,0 +1,15 @@
+# Wrangler / Cloudflare local cache, dev state, build output
+.wrangler/
+
+# Local secrets (wrangler dev) — never commit
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+
+# Dependencies (if you ever `npm install` locally)
+node_modules/
+
+# OS / editor junk
+.DS_Store
+*.log

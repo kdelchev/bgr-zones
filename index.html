@@ -139,10 +139,49 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 let activeGroups = [];
 let layerControl = null;
 let legendControl = null;
+let currentZones = [];        // for click hit-testing across overlapping zones
+let restrictionGroups = {};   // restriction -> LayerGroup, to honour layer toggles
 
 function setStatus(text, isError) {
   document.getElementById("status").textContent = text;
   document.getElementById("bar").classList.toggle("error", !!isError);
+}
+
+// Ray-casting point-in-ring (ring = [[lat,lon],...]; x=lon, y=lat).
+function pointInRing(lat, lng, ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const yi = ring[i][0], xi = ring[i][1], yj = ring[j][0], xj = ring[j][1];
+    if (((yi > lat) !== (yj > lat)) && (lng < ((xj - xi) * (lat - yi)) / (yj - yi) + xi)) inside = !inside;
+  }
+  return inside;
+}
+function zoneContains(z, latlng) {
+  if (z.shape === "circle") return map.distance(latlng, L.latLng(z.lat, z.lon)) <= z.radius;
+  let inside = false; // even-odd across rings (handles polygon holes)
+  for (const ring of z.rings) if (pointInRing(latlng.lat, latlng.lng, ring)) inside = !inside;
+  return inside;
+}
+const zoneVisible = (z) => {
+  const g = restrictionGroups[z.restriction];
+  return !!g && map.hasLayer(g);
+};
+
+function aggregatePopupHtml(zs) {
+  const blocks = zs.map((z, i) => {
+    const sep = i ? "border-top:1px solid #ddd;margin-top:8px;padding-top:8px;" : "";
+    const swatch = `<span style="display:inline-block;width:10px;height:10px;background:${z.color};border:1px solid #0006;border-radius:2px;margin-right:5px;vertical-align:middle"></span>`;
+    return `<div style="${sep}"><div style="font-weight:600;font-size:12px;color:#374151;margin-bottom:2px">${swatch}#${i + 1} of ${zs.length}</div>${popupHtml(z)}</div>`;
+  }).join("");
+  return `<div style="max-height:340px;overflow:auto"><div style="font-weight:600;margin-bottom:6px">${zs.length} overlapping zones here — scroll for all</div>${blocks}</div>`;
+}
+
+// On any zone click, find every visible zone covering that point and show them together.
+function onZoneClick(e) {
+  const hits = currentZones.filter((z) => zoneVisible(z) && zoneContains(z, e.latlng));
+  if (!hits.length) return;
+  const html = hits.length === 1 ? popupHtml(hits[0]) : aggregatePopupHtml(hits);
+  L.popup({ maxWidth: 360, autoPan: true }).setLatLng(e.latlng).setContent(html).openOn(map);
 }
 
 function render(rawEd269) {
@@ -175,10 +214,12 @@ function render(rawEd269) {
       layer = L.polygon(z.rings, style);
       for (const ring of z.rings) for (const [la, lo] of ring) ext(la, lo);
     }
-    layer.bindPopup(popupHtml(z));
+    layer.on("click", onZoneClick); // aggregate popup handles overlaps
     (groups[z.restriction] = groups[z.restriction] || L.layerGroup().addTo(map)).addLayer(layer);
   }
 
+  currentZones = zones;
+  restrictionGroups = groups;
   activeGroups = Object.values(groups);
   map.fitBounds([[minLat, minLon], [maxLat, maxLon]], { padding: [20, 20] });
   layerControl = L.control.layers(null, groups, { collapsed: false }).addTo(map);

@@ -90,6 +90,9 @@ for (const f of features) {
     lowerRef: g.lowerVerticalReference ?? "",
     upperRef: g.upperVerticalReference ?? "",
     uom: g.uomDimensions ?? "M",
+    applicability: Array.isArray(f.applicability) ? f.applicability : [],
+    regulationExemption: f.regulationExemption ?? "",
+    zoneAuthority: Array.isArray(f.zoneAuthority) ? f.zoneAuthority : [],
   };
 
   if (hp.type === "Circle" && Array.isArray(hp.center)) {
@@ -109,11 +112,22 @@ for (const f of features) {
 const escapeHtml = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+function fmtApplicability(app) {
+  if (!Array.isArray(app) || !app.length) return "";
+  return app
+    .map((a) =>
+      a.permanent === "YES" ? "Permanent" : [a.startDateTime, a.endDateTime].filter(Boolean).join(" → "),
+    )
+    .filter(Boolean)
+    .join("; ");
+}
+
 function popupHtml(z) {
   const band =
     z.lowerLimit != null && z.upperLimit != null
       ? `${z.lowerLimit}–${z.upperLimit} ${z.uom} (${z.lowerRef || "?"}→${z.upperRef || "?"})`
       : "";
+  const za = (z.zoneAuthority && z.zoneAuthority[0]) || null;
   const rows = [
     ["ID", z.identifier],
     ["Name", z.name],
@@ -124,6 +138,13 @@ function popupHtml(z) {
     ["U-space", z.uSpaceClass],
     ["Vertical", band],
     z.shape === "circle" ? ["Radius", `${z.radius} m`] : null,
+    ["Applicability", fmtApplicability(z.applicability)],
+    ["Reg. exemption", z.regulationExemption],
+    za ? ["Authority", [za.name, za.purpose].filter(Boolean).join(" · ")] : null,
+    za ? ["Contact", za.contactName] : null,
+    za ? ["Email", za.email] : null,
+    za ? ["Phone", za.phone] : null,
+    za ? ["Notify before", za.intervalBefore] : null,
     ["Message", z.message],
   ].filter((r) => r && r[1] !== "" && r[1] != null);
   const trs = rows

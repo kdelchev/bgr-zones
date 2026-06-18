@@ -88,6 +88,9 @@ function normalize(raw) {
       message: f.message || "", lowerLimit: g.lowerLimit, upperLimit: g.upperLimit,
       lowerRef: g.lowerVerticalReference || "", upperRef: g.upperVerticalReference || "",
       uom: g.uomDimensions || "M", color: colorFor(f.restriction),
+      applicability: Array.isArray(f.applicability) ? f.applicability : [],
+      regulationExemption: f.regulationExemption || "",
+      zoneAuthority: Array.isArray(f.zoneAuthority) ? f.zoneAuthority : [],
     };
     if (hp.type === "Circle" && Array.isArray(hp.center)) {
       const [lon, lat] = fix(hp.center[0], hp.center[1], z.identifier);
@@ -101,13 +104,26 @@ function normalize(raw) {
   return { zones, corrected: [...corrected], outliers: [...outliers], title: raw.title || "BGR zones" };
 }
 
+function fmtApplicability(app) {
+  if (!Array.isArray(app) || !app.length) return "";
+  return app.map((a) => a.permanent === "YES"
+    ? "Permanent"
+    : [a.startDateTime, a.endDateTime].filter(Boolean).join(" → ")).filter(Boolean).join("; ");
+}
+
 function popupHtml(z) {
   const band = z.lowerLimit != null && z.upperLimit != null
     ? `${z.lowerLimit}–${z.upperLimit} ${z.uom} (${z.lowerRef || "?"}→${z.upperRef || "?"})` : "";
+  const za = (z.zoneAuthority && z.zoneAuthority[0]) || null;
   const rows = [
     ["ID", z.identifier], ["Name", z.name], ["Type", z.type], ["Restriction", z.restriction],
     ["Reason", z.reason.join(", ")], ["Other", z.otherReasonInfo], ["U-space", z.uSpaceClass],
-    ["Vertical", band], z.shape === "circle" ? ["Radius", `${z.radius} m`] : null, ["Message", z.message],
+    ["Vertical", band], z.shape === "circle" ? ["Radius", `${z.radius} m`] : null,
+    ["Applicability", fmtApplicability(z.applicability)], ["Reg. exemption", z.regulationExemption],
+    za ? ["Authority", [za.name, za.purpose].filter(Boolean).join(" · ")] : null,
+    za ? ["Contact", za.contactName] : null, za ? ["Email", za.email] : null,
+    za ? ["Phone", za.phone] : null, za ? ["Notify before", za.intervalBefore] : null,
+    ["Message", z.message],
   ].filter((r) => r && r[1] !== "" && r[1] != null);
   const trs = rows.map(([k, v]) =>
     `<tr><th style="text-align:left;padding-right:8px;vertical-align:top;white-space:nowrap">${escapeHtml(k)}</th><td>${escapeHtml(v)}</td></tr>`).join("");

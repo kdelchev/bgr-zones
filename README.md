@@ -24,9 +24,11 @@ npx wrangler deploy     # → https://bgr-zones.<your-subdomain>.workers.dev
 Edit `DEFAULT_WORKER_URL` near the top of the `<script>` in `index.html`, or test without editing via the
 query param: `index.html?worker=https://bgr-zones.<you>.workers.dev`.
 
-### 3. Publish the page (GitHub Pages)
-Push this repo to GitHub, then enable **Settings → Pages → Deploy from branch** (root). Opening the Pages URL
-auto-loads and renders the latest zones. Use **Reload latest** to re-fetch.
+### 3. Publish the page (GitHub Pages via Actions)
+Set **Settings → Pages → Build and deployment → Source = GitHub Actions** (once). Deployment is then handled
+by `.github/workflows/deploy.yml` (see below) — every push to `main`, the weekly schedule, and manual runs
+publish the site. Opening the Pages URL auto-loads and renders the latest zones; **Reload latest** re-fetches
+the ED-269 data live.
 
 ### Features
 - Circles drawn as **true circles** (native radius); polygons drawn directly. Canvas renderer
@@ -68,6 +70,17 @@ node bin/fetch-airzones.mjs
   (the single file the viewer loads, same-origin via Pages — no Worker/CORS needed for this layer).
 
 Run it before committing when you want fresh airzone data.
+
+### Automated weekly refresh + deploy (`.github/workflows/deploy.yml`)
+A GitHub Actions workflow keeps the site current with no manual steps:
+- **Triggers:** weekly cron (`Mon 06:00 UTC`), manual (**Actions → Run workflow**), and every push to `main`.
+- On the schedule/manual runs it runs `bin/fetch-airzones.mjs`, commits the refreshed `airzones/` back **only
+  if something changed**, then deploys. Plain pushes skip the fetch (so caa.bg isn't hit) and just redeploy.
+- Deploys via the official Pages pipeline (`upload-pages-artifact` + `deploy-pages`), publishing a curated
+  `_site/` (the viewer + `airzones/all.geojson` + the legacy offline artifacts).
+
+**Prerequisite:** Pages **Source = GitHub Actions** (step 3 above). Note: GitHub pauses scheduled workflows
+after ~60 days with no repo activity — the bot's commits or any manual push/dispatch keep it alive.
 
 ## Offline / static generator — `build_zone_map.mjs`
 

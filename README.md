@@ -29,13 +29,45 @@ Push this repo to GitHub, then enable **Settings → Pages → Deploy from branc
 auto-loads and renders the latest zones. Use **Reload latest** to re-fetch.
 
 ### Features
-- Circles drawn as **true circles** (native radius); polygons drawn directly.
-- Color-coded by restriction: 🔴 PROHIBITED · 🟠 REQ_AUTHORISATION · 🟡 CONDITIONAL.
-- Click-for-metadata popups, per-restriction layer toggles, legend with counts.
+- Circles drawn as **true circles** (native radius); polygons drawn directly. Canvas renderer
+  (`preferCanvas`) keeps ~1,200 vectors smooth.
+- **Grouped layer control** (doubles as the legend) with two sections — *CAA ED‑269* and *CAA airzones* —
+  each with a master on/off plus per-category toggles and counts.
+- Click-for-metadata popups; clicking an overlap lists **every** zone under the cursor (across both layers).
 - Auto-fixes a known lat/lon **transposition** (zone `0000502`) and flags an out-of-region **outlier**
   (zone `0001133`) without moving it.
 - **Manual fallback:** if the Worker is unreachable, drag/drop or open a `.zip`/`.json` downloaded from
   caa.bg — works fully client-side (only map tiles need internet).
+
+### Color scheme (two orthogonal axes)
+ED‑269 `restriction` (drone severity, warm ramp) and airzone `type` (zone purpose, cool/qualitative) are
+independent classifications, so each source has its own palette:
+
+| ED‑269 (severity) | Airzones (purpose) |
+|---|---|
+| 🔴 PROHIBITED `#d7191c` | 🟣 Security `#7c3aed` |
+| 🟠 REQ_AUTHORISATION `#fdae61` | 🔵 Airport — restricted `#2563eb` |
+| 🟡 CONDITIONAL `#f7e043` | 🟦 Airport — safety `#0891b2` · 🟢 Coordination `#15803d` · 🌸 Environmental `#be185d` |
+
+## Second layer — CAA "airzones" (`bin/fetch-airzones.mjs` + `airzones/`)
+
+The CAA also publishes an *Interactive Maps – Flight Zones* catalog
+(https://www.caa.bg/bg/category/745) of **302 zones** (border "security areas", airport zones, prisons,
+numbered restricted/danger areas, …) — a dataset **separate** from the ED-269 drone ZIP. The viewer shows
+it as a second source, **split into one toggleable layer per type** (Security, Airport restricted/safety,
+Coordination, Environmental), on by default, with its own source link.
+
+`bin/fetch-airzones.mjs` builds the data — **fetch-only** (no git; commit/push yourself):
+```sh
+node bin/fetch-airzones.mjs
+```
+- Crawls the category-745 index, then downloads each `https://www.caa.bg/bg/airzones/{id}` GeoJSON.
+- **Idempotent:** stores an md5 per zone in `airzones/manifest.json`; unchanged zones are left untouched
+  (and stale ones removed), so re-runs produce no diff.
+- Writes per-zone `airzones/{id}.geojson`, the `manifest.json`, and a combined **`airzones/all.geojson`**
+  (the single file the viewer loads, same-origin via Pages — no Worker/CORS needed for this layer).
+
+Run it before committing when you want fresh airzone data.
 
 ## Offline / static generator — `build_zone_map.mjs`
 

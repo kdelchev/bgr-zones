@@ -43,7 +43,8 @@
   <span id="status">Starting…</span>
   <button id="reload" title="Re-fetch the latest file">Reload latest</button>
   <label class="btn">Open file…<input id="file" type="file" accept=".zip,.json" hidden></label>
-  <a href="https://www.caa.bg/bg/category/633/7062" target="_blank" rel="noopener">CAA source ↗</a>
+  <a href="https://www.caa.bg/bg/category/633/7062" target="_blank" rel="noopener">CAA ED‑269 ↗</a>
+  <a href="https://www.caa.bg/bg/category/745" target="_blank" rel="noopener">CAA airzones ↗</a>
 </div>
 <div id="map"></div>
 <div id="drophint">Drop a .zip or .json file to visualize</div>
@@ -55,9 +56,21 @@
 const DEFAULT_WORKER_URL = "https://bgr-zones.kdelchev.workers.dev/"; // e.g. "https://bgr-zones.<your-subdomain>.workers.dev"
 const WORKER_URL = new URLSearchParams(location.search).get("worker") || DEFAULT_WORKER_URL;
 
-// --- Restriction → color ---
+// --- ED-269 restriction → color (warm severity ramp) ---
 const COLORS = { PROHIBITED: "#d7191c", REQ_AUTHORISATION: "#fdae61", CONDITIONAL: "#f7e043" };
 const colorFor = (r) => COLORS[r] || "#3388ff";
+
+// --- CAA airzone type → {label, color} (cool/qualitative palette, distinct from ED-269) ---
+const AIRZONE_TYPES = [
+  { key: "Зони за сигурност", label: "Security", color: "#7c3aed" },
+  { key: "Зони ограничени около летища", label: "Airport — restricted", color: "#2563eb" },
+  { key: "Зони за безопасност около летищата", label: "Airport — safety", color: "#0891b2" },
+  { key: "Зоните за координация", label: "Coordination", color: "#15803d" },
+  { key: "Зони за околна среда", label: "Environmental", color: "#be185d" },
+];
+const AIRZONE_BY_KEY = Object.fromEntries(AIRZONE_TYPES.map((t) => [t.key, t]));
+const colorForAirzone = (type) => (AIRZONE_BY_KEY[type] || { color: "#64748b" }).color;
+const AIRZONES_URL = "airzones/all.geojson"; // same-origin static file (built by bin/fetch-airzones.mjs)
 
 // --- Coordinate sanity: Bulgaria + neighbors box. Fix lat/lon transpositions; flag true outliers. ---
 const inBox = (lon, lat) => lon >= 21 && lon <= 30 && lat >= 40.5 && lat <= 45;
@@ -111,7 +124,44 @@ function fmtApplicability(app) {
     : [a.startDateTime, a.endDateTime].filter(Boolean).join(" → ")).filter(Boolean).join("; ");
 }
 
+// CAA airzones (2nd layer): a GeoJSON FeatureCollection with {id,title,type,source} props.
+// Geometry is Polygon/MultiPolygon (most) or LineString/MultiLineString (the Зона-Д series).
+function normalizeAirzones(fc) {
+  const polygons = [], lines = [];
+  for (const f of (fc.features || [])) {
+    const g = f.geometry;
+    const p = f.properties || {};
+    if (!g) continue;
+    const type = p.type || "";
+    const base = {
+      dataset: "airzones", id: p.id || "", title: p.title || p.name || "", type,
+      source: p.source || "", color: colorForAirzone(type),
+    };
+    if (g.type === "Polygon" || g.type === "MultiPolygon") {
+      const polys = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+      for (const poly of polys) {
+        polygons.push({ ...base, shape: "polygon", rings: poly.map((ring) => ring.map(([lon, lat]) => [lat, lon])) });
+      }
+    } else if (g.type === "LineString" || g.type === "MultiLineString") {
+      const segs = g.type === "LineString" ? [g.coordinates] : g.coordinates;
+      for (const seg of segs) lines.push({ ...base, shape: "line", latlngs: seg.map(([lon, lat]) => [lat, lon]) });
+    }
+  }
+  return { polygons, lines };
+}
+
+function airzonePopupHtml(z) {
+  const rows = [["ID", z.id], ["Name", z.title], ["Type", z.type]]
+    .filter((r) => r[1] !== "" && r[1] != null)
+    .map(([k, v]) => `<tr><th style="text-align:left;padding-right:8px">${escapeHtml(k)}</th><td>${escapeHtml(v)}</td></tr>`)
+    .join("");
+  const src = z.source
+    ? `<div style="margin-top:4px"><a href="${escapeHtml(z.source)}" target="_blank" rel="noopener">CAA page ↗</a></div>` : "";
+  return `<table style="font:12px/1.4 system-ui,sans-serif;max-width:320px">${rows}</table>${src}`;
+}
+
 function popupHtml(z) {
+  if (z.dataset === "airzones") return airzonePopupHtml(z);
   const band = z.lowerLimit != null && z.upperLimit != null
     ? `${z.lowerLimit}–${z.upperLimit} ${z.uom} (${z.lowerRef || "?"}→${z.upperRef || "?"})` : "";
   const za = (z.zoneAuthority && z.zoneAuthority[0]) || null;
@@ -131,16 +181,23 @@ function popupHtml(z) {
 }
 
 // --- Map setup ---
-const map = L.map("map").setView([42.7, 25.3], 7); // valid view before first render
+// preferCanvas: draw the ~1,183 vectors on a canvas (much faster than SVG for this many).
+const map = L.map("map", { preferCanvas: true }).setView([42.7, 25.3], 7);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19, attribution: "&copy; OpenStreetMap contributors",
 }).addTo(map);
 
 let activeGroups = [];
-let layerControl = null;
-let legendControl = null;
-let currentZones = [];        // for click hit-testing across overlapping zones
-let restrictionGroups = {};   // restriction -> LayerGroup, to honour layer toggles
+let controlEl = null;         // custom grouped layer-toggle + legend control
+let currentZones = [];        // ED-269 zones, for click hit-testing across overlapping zones
+let restrictionGroups = {};   // restriction -> LayerGroup
+let ed269Counts = {};
+let ed269Meta = null;         // { title, total, corrected, outliers }
+let airzoneZones = [];        // CAA airzone POLYGONS (in the unified click hit-test)
+let airzoneLines = [];        // CAA airzone LINEs (own popups)
+let airzoneGroups = {};       // type-key -> LayerGroup (one per airzone type)
+let airzoneCounts = {};       // type-key -> count
+const airzoneTotal = () => Object.values(airzoneCounts).reduce((a, b) => a + b, 0);
 
 function setStatus(text, isError) {
   document.getElementById("status").textContent = text;
@@ -163,22 +220,23 @@ function zoneContains(z, latlng) {
   return inside;
 }
 const zoneVisible = (z) => {
-  const g = restrictionGroups[z.restriction];
+  const g = z.dataset === "airzones" ? airzoneGroups[z.type] : restrictionGroups[z.restriction];
   return !!g && map.hasLayer(g);
 };
 
 function aggregatePopupHtml(zs) {
   const blocks = zs.map((z, i) => {
     const sep = i ? "border-top:1px solid #ddd;margin-top:8px;padding-top:8px;" : "";
-    const swatch = `<span style="display:inline-block;width:10px;height:10px;background:${z.color};border:1px solid #0006;border-radius:2px;margin-right:5px;vertical-align:middle"></span>`;
-    return `<div style="${sep}"><div style="font-weight:600;font-size:12px;color:#374151;margin-bottom:2px">${swatch}#${i + 1} of ${zs.length}</div>${popupHtml(z)}</div>`;
+    const sw = `<span style="display:inline-block;width:10px;height:10px;background:${z.color};border:1px solid #0006;border-radius:2px;margin-right:5px;vertical-align:middle"></span>`;
+    const tag = z.dataset === "airzones" ? "CAA airzone" : "ED‑269";
+    return `<div style="${sep}"><div style="font-weight:600;font-size:12px;color:#374151;margin-bottom:2px">${sw}#${i + 1} of ${zs.length} · ${tag}</div>${popupHtml(z)}</div>`;
   }).join("");
   return `<div style="max-height:340px;overflow:auto"><div style="font-weight:600;margin-bottom:6px">${zs.length} overlapping zones here — scroll for all</div>${blocks}</div>`;
 }
 
-// On any zone click, find every visible zone covering that point and show them together.
+// On any zone click, find every visible zone covering that point (both layers) and show them together.
 function onZoneClick(e) {
-  const hits = currentZones.filter((z) => zoneVisible(z) && zoneContains(z, e.latlng));
+  const hits = [...currentZones, ...airzoneZones].filter((z) => zoneVisible(z) && zoneContains(z, e.latlng));
   if (!hits.length) return;
   const html = hits.length === 1 ? popupHtml(hits[0]) : aggregatePopupHtml(hits);
   L.popup({ maxWidth: 360, autoPan: true }).setLatLng(e.latlng).setContent(html).openOn(map);
@@ -191,7 +249,6 @@ function render(rawEd269) {
   // Clear any previous render.
   activeGroups.forEach((g) => map.removeLayer(g));
   activeGroups = [];
-  if (layerControl) { map.removeControl(layerControl); layerControl = null; }
 
   const groups = {};
   const counts = {};
@@ -220,10 +277,11 @@ function render(rawEd269) {
 
   currentZones = zones;
   restrictionGroups = groups;
+  ed269Counts = counts;
+  ed269Meta = { title, total: zones.length, corrected, outliers };
   activeGroups = Object.values(groups);
   map.fitBounds([[minLat, minLon], [maxLat, maxLon]], { padding: [20, 20] });
-  layerControl = L.control.layers(null, groups, { collapsed: false }).addTo(map);
-  updateLegend(title, zones.length, counts, corrected, outliers);
+  rebuildControl();
 
   let msg = `${title} — ${zones.length} zones`;
   if (corrected.length) msg += ` · fixed ${corrected.length} transposed`;
@@ -231,20 +289,113 @@ function render(rawEd269) {
   setStatus(msg, false);
 }
 
-function updateLegend(title, total, counts, corrected, outliers) {
-  if (legendControl) map.removeControl(legendControl);
-  legendControl = L.control({ position: "bottomright" });
-  legendControl.onAdd = () => {
-    const div = L.DomUtil.create("div", "legend");
-    const rows = Object.keys(COLORS).map((k) =>
-      `<div><span style="display:inline-block;width:12px;height:12px;background:${COLORS[k]};border:1px solid #0006;margin-right:6px"></span>${k} (${counts[k] || 0})</div>`).join("");
-    let warn = "";
-    if (corrected.length) warn += `<div class="warn">Fixed transposition: ${corrected.join(", ")}</div>`;
-    if (outliers.length) warn += `<div class="warn">Out-of-region (verify): ${outliers.join(", ")}</div>`;
-    div.innerHTML = `<b>${escapeHtml(title)} — ${total} zones</b>${rows}${warn}`;
-    return div;
+// Two-section list: each item = one toggleable LayerGroup with its color + count (doubles as legend).
+function controlSections() {
+  const ed = Object.keys(COLORS)
+    .filter((r) => restrictionGroups[r])
+    .map((r) => ({ label: r, color: COLORS[r], count: ed269Counts[r] || 0, group: restrictionGroups[r] }));
+  const az = AIRZONE_TYPES
+    .filter((t) => airzoneGroups[t.key])
+    .map((t) => ({ label: t.label, color: t.color, count: airzoneCounts[t.key] || 0, group: airzoneGroups[t.key] }));
+  return [
+    { title: `CAA ED‑269${ed269Meta ? ` (${ed269Meta.total})` : ""}`, items: ed },
+    { title: `CAA airzones${airzoneTotal() ? ` (${airzoneTotal()})` : ""}`, items: az },
+  ];
+}
+
+// Custom grouped control (top-right) = layer toggles + legend in one panel. Rebuilt as each layer loads.
+function rebuildControl() {
+  if (controlEl) map.removeControl(controlEl);
+  controlEl = L.control({ position: "topright" });
+  controlEl.onAdd = () => {
+    const root = L.DomUtil.create("div", "legend layerctl");
+    L.DomEvent.disableClickPropagation(root);
+    L.DomEvent.disableScrollPropagation(root);
+    const sections = controlSections();
+    for (const sec of sections) {
+      if (!sec.items.length) continue;
+      const rows = [];
+      const head = L.DomUtil.create("div", "", root);
+      head.style.cssText = "font-weight:600;margin:6px 0 2px";
+      const master = document.createElement("input");
+      master.type = "checkbox";
+      master.style.marginRight = "6px";
+      const onCount = () => sec.items.filter((it) => map.hasLayer(it.group)).length;
+      const syncMaster = () => {
+        const n = onCount();
+        master.checked = n === sec.items.length;
+        master.indeterminate = n > 0 && n < sec.items.length;
+      };
+      master.addEventListener("change", () => {
+        sec.items.forEach((it, i) => {
+          if (master.checked) map.addLayer(it.group); else map.removeLayer(it.group);
+          rows[i].checked = master.checked;
+        });
+        master.indeterminate = false;
+      });
+      head.append(master, document.createTextNode(sec.title));
+      for (const it of sec.items) {
+        const row = L.DomUtil.create("label", "", root);
+        row.style.cssText = "display:block;margin-left:2px;cursor:pointer";
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = map.hasLayer(it.group);
+        cb.style.marginRight = "6px";
+        cb.addEventListener("change", () => {
+          if (cb.checked) map.addLayer(it.group); else map.removeLayer(it.group);
+          syncMaster();
+        });
+        rows.push(cb);
+        const sw = document.createElement("span");
+        sw.style.cssText = `display:inline-block;width:12px;height:12px;background:${it.color};border:1px solid #0006;margin-right:6px;vertical-align:middle`;
+        row.append(cb, sw, document.createTextNode(`${it.label} (${it.count})`));
+      }
+      syncMaster();
+    }
+    if (ed269Meta && (ed269Meta.corrected.length || ed269Meta.outliers.length)) {
+      const w = L.DomUtil.create("div", "warn", root);
+      if (ed269Meta.corrected.length) w.append(`Fixed transposition: ${ed269Meta.corrected.join(", ")}`, document.createElement("br"));
+      if (ed269Meta.outliers.length) w.append(`Out-of-region (verify): ${ed269Meta.outliers.join(", ")}`);
+    }
+    if (!sections.some((s) => s.items.length)) root.textContent = "Loading…";
+    return root;
   };
-  legendControl.addTo(map);
+  controlEl.addTo(map);
+}
+
+// Load + render the CAA airzones layer (independent of the ED-269 worker load). On by default.
+async function loadAirzones() {
+  try {
+    const res = await fetch(AIRZONES_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const norm = normalizeAirzones(await res.json());
+    airzoneZones = norm.polygons;
+    airzoneLines = norm.lines;
+    renderAirzones();
+  } catch (e) {
+    console.warn(`CAA airzones layer not loaded (${e.message}). Expected at ${AIRZONES_URL}.`);
+  }
+}
+
+function renderAirzones() {
+  Object.values(airzoneGroups).forEach((g) => map.removeLayer(g));
+  airzoneGroups = {};
+  airzoneCounts = {};
+  const ensure = (type) => {
+    if (!airzoneGroups[type]) { airzoneGroups[type] = L.layerGroup().addTo(map); airzoneCounts[type] = 0; }
+    return airzoneGroups[type];
+  };
+  for (const z of airzoneZones) { // polygons → unified aggregate click
+    const layer = L.polygon(z.rings, { color: z.color, weight: 1, fillColor: z.color, fillOpacity: 0.2 });
+    layer.on("click", onZoneClick);
+    ensure(z.type).addLayer(layer); airzoneCounts[z.type]++;
+  }
+  for (const z of airzoneLines) { // lines → own popup (not area-clickable)
+    const layer = L.polyline(z.latlngs, { color: z.color, weight: 2 });
+    layer.bindPopup(airzonePopupHtml(z));
+    ensure(z.type).addLayer(layer); airzoneCounts[z.type]++;
+  }
+  rebuildControl(); // groups are on the map (on by default); control reflects current state
 }
 
 // --- Data loading ---
@@ -299,6 +450,7 @@ if (WORKER_URL) {
 } else {
   setStatus('Set the Worker URL (or use ?worker=…) to auto-load, or drop / open a .zip / .json file.', true);
 }
+loadAirzones(); // 2nd layer, independent of the ED-269 source
 </script>
 </body>
 </html>

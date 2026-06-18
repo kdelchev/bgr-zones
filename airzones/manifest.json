@@ -1,0 +1,2419 @@
+[
+  {
+    "id": "15934",
+    "title": "Зона за безопасност около летище Алфа-Метал",
+    "type": "Зони за безопасност около летищата",
+    "file": "15934.geojson",
+    "hash": "6dc5e98431c03b5ee0d2d27a655c7522",
+    "source": "https://www.caa.bg/bg/category/745/15934"
+  },
+  {
+    "id": "15935",
+    "title": "Зона за безопасност около летище Балчик.kml",
+    "type": "Зони за безопасност около летищата",
+    "file": "15935.geojson",
+    "hash": "8b806ef5f545867eb27879173b998488",
+    "source": "https://www.caa.bg/bg/category/745/15935"
+  },
+  {
+    "id": "15936",
+    "title": "Зона за безопасност около летище Баховица.kml",
+    "type": "Зони за безопасност около летищата",
+    "file": "15936.geojson",
+    "hash": "29b98940f5993b13ce3d36ae50316253",
+    "source": "https://www.caa.bg/bg/category/745/15936"
+  },
+  {
+    "id": "15937",
+    "title": "Зона за безопасност около летище Белчин.kml",
+    "type": "Зони за безопасност около летищата",
+    "file": "15937.geojson",
+    "hash": "2340af4e979ada0bdce099e5b775219d",
+    "source": "https://www.caa.bg/bg/category/745/15937"
+  },
+  {
+    "id": "15938",
+    "title": "Зона за безопасност около летище Благоево",
+    "type": "Зони за безопасност около летищата",
+    "file": "15938.geojson",
+    "hash": "7ecc61811fdfff312ec9f146e269e8ce",
+    "source": "https://www.caa.bg/bg/category/745/15938"
+  },
+  {
+    "id": "15939",
+    "title": "Зона за безопасност около летище Бохот",
+    "type": "Зони за безопасност около летищата",
+    "file": "15939.geojson",
+    "hash": "09100860960c3f4e893bac0d5119fc3c",
+    "source": "https://www.caa.bg/bg/category/745/15939"
+  },
+  {
+    "id": "15940",
+    "title": "Зона за безопасност около летище Брезник",
+    "type": "Зони за безопасност около летищата",
+    "file": "15940.geojson",
+    "hash": "03b76592aadff4272be7a46910fac205",
+    "source": "https://www.caa.bg/bg/category/745/15940"
+  },
+  {
+    "id": "15941",
+    "title": "Зона за безопасност около летище Бургас",
+    "type": "Зони за безопасност около летищата",
+    "file": "15941.geojson",
+    "hash": "f461b14aa7a7369ee589536ac7b88a1f",
+    "source": "https://www.caa.bg/bg/category/745/15941"
+  },
+  {
+    "id": "15942",
+    "title": "Зона за безопасност около летище Бъзън",
+    "type": "Зони за безопасност около летищата",
+    "file": "15942.geojson",
+    "hash": "17d6eec41f453ecdd19055201fac3635",
+    "source": "https://www.caa.bg/bg/category/745/15942"
+  },
+  {
+    "id": "15943",
+    "title": "Зона за безопасност около летище Бяла",
+    "type": "Зони за безопасност около летищата",
+    "file": "15943.geojson",
+    "hash": "1e38f25bc8125973fc6d2d0afeb1f64b",
+    "source": "https://www.caa.bg/bg/category/745/15943"
+  },
+  {
+    "id": "15944",
+    "title": "Зона за безопасност около летище Варна",
+    "type": "Зони за безопасност около летищата",
+    "file": "15944.geojson",
+    "hash": "6e1193049d78d69ab6f20fbf81b79e5e",
+    "source": "https://www.caa.bg/bg/category/745/15944"
+  },
+  {
+    "id": "15945",
+    "title": "Зона за безопасност около летище Враца",
+    "type": "Зони за безопасност около летищата",
+    "file": "15945.geojson",
+    "hash": "b5e135b78104003f393bf328ff64ce09",
+    "source": "https://www.caa.bg/bg/category/745/15945"
+  },
+  {
+    "id": "15946",
+    "title": "Зона за безопасност около летище Горна Оряховица",
+    "type": "Зони за безопасност около летищата",
+    "file": "15946.geojson",
+    "hash": "5c8fc3b96144cced5e92d99a9deb3aa4",
+    "source": "https://www.caa.bg/bg/category/745/15946"
+  },
+  {
+    "id": "15947",
+    "title": "Зона за безопасност около летище Горски извор",
+    "type": "Зони за безопасност около летищата",
+    "file": "15947.geojson",
+    "hash": "504873e906f0d44fa6a0e3e898875d27",
+    "source": "https://www.caa.bg/bg/category/745/15947"
+  },
+  {
+    "id": "15948",
+    "title": "Зона за безопасност около летище Градище",
+    "type": "Зони за безопасност около летищата",
+    "file": "15948.geojson",
+    "hash": "ebe3bf7b59e626b774286fb6e5b9ebca",
+    "source": "https://www.caa.bg/bg/category/745/15948"
+  },
+  {
+    "id": "15949",
+    "title": "Зона за безопасност около летище Гривица",
+    "type": "Зони за безопасност около летищата",
+    "file": "15949.geojson",
+    "hash": "a684dc498d902e6c2d3c82e96ca42a78",
+    "source": "https://www.caa.bg/bg/category/745/15949"
+  },
+  {
+    "id": "15950",
+    "title": "Зона за безопасност около летище Даскал Атанасово",
+    "type": "Зони за безопасност около летищата",
+    "file": "15950.geojson",
+    "hash": "6382627e34b8b5d33b8af26ccfbad70b",
+    "source": "https://www.caa.bg/bg/category/745/15950"
+  },
+  {
+    "id": "15951",
+    "title": "Зона за безопасност около летище Две могили",
+    "type": "Зони за безопасност около летищата",
+    "file": "15951.geojson",
+    "hash": "a7917528a1d2069be5408a9b7fb0193a",
+    "source": "https://www.caa.bg/bg/category/745/15951"
+  },
+  {
+    "id": "15952",
+    "title": "Зона за безопасност около летище Долна баня",
+    "type": "Зони за безопасност около летищата",
+    "file": "15952.geojson",
+    "hash": "5013114a37fcaff6c0f4108237a94be7",
+    "source": "https://www.caa.bg/bg/category/745/15952"
+  },
+  {
+    "id": "15953",
+    "title": "Зона за безопасност около летище Долна Митрополия",
+    "type": "Зони за безопасност около летищата",
+    "file": "15953.geojson",
+    "hash": "2d2ddfb23a99a30f4ebe192bf73787ea",
+    "source": "https://www.caa.bg/bg/category/745/15953"
+  },
+  {
+    "id": "15955",
+    "title": "Зона за безопасност около летище Ерден",
+    "type": "Зони за безопасност около летищата",
+    "file": "15955.geojson",
+    "hash": "9fd7eeec5a676fc75029b3fcfdf7d1ea",
+    "source": "https://www.caa.bg/bg/category/745/15955"
+  },
+  {
+    "id": "15956",
+    "title": "Зона за безопасност около летище Ихтиман",
+    "type": "Зони за безопасност около летищата",
+    "file": "15956.geojson",
+    "hash": "c9bcd4e3345efc67ae0a754f94595a81",
+    "source": "https://www.caa.bg/bg/category/745/15956"
+  },
+  {
+    "id": "15957",
+    "title": "Зона за безопасност около летище Казанлък",
+    "type": "Зони за безопасност около летищата",
+    "file": "15957.geojson",
+    "hash": "82b81cd133e5b5423779ee7707672938",
+    "source": "https://www.caa.bg/bg/category/745/15957"
+  },
+  {
+    "id": "15958",
+    "title": "Зона за безопасност около летище Кайнарджа",
+    "type": "Зони за безопасност около летищата",
+    "file": "15958.geojson",
+    "hash": "49965a269a4f2f077ebade88706663ff",
+    "source": "https://www.caa.bg/bg/category/745/15958"
+  },
+  {
+    "id": "15959",
+    "title": "Зона за безопасност около летище Лесново",
+    "type": "Зони за безопасност около летищата",
+    "file": "15959.geojson",
+    "hash": "08b8fe5d28e2bd525ca9d62bffa20ab8",
+    "source": "https://www.caa.bg/bg/category/745/15959"
+  },
+  {
+    "id": "15960",
+    "title": "Зона за безопасност около летище Малево",
+    "type": "Зони за безопасност около летищата",
+    "file": "15960.geojson",
+    "hash": "bf94ab6fcc270afb8c325ee4a7cbff63",
+    "source": "https://www.caa.bg/bg/category/745/15960"
+  },
+  {
+    "id": "15961",
+    "title": "Зона за безопасност около летище Маноле",
+    "type": "Зони за безопасност около летищата",
+    "file": "15961.geojson",
+    "hash": "cfaaf5f47c1b1ef8eb5f7b1e247e78b9",
+    "source": "https://www.caa.bg/bg/category/745/15961"
+  },
+  {
+    "id": "15962",
+    "title": "Зона за безопасност около летище Марица",
+    "type": "Зони за безопасност около летищата",
+    "file": "15962.geojson",
+    "hash": "0335dcac03b288468bb6f87675e9fd3f",
+    "source": "https://www.caa.bg/bg/category/745/15962"
+  },
+  {
+    "id": "15963",
+    "title": "Зона за безопасност около летище Монтана",
+    "type": "Зони за безопасност около летищата",
+    "file": "15963.geojson",
+    "hash": "99a8237897f9d1a471f58f967b0721f5",
+    "source": "https://www.caa.bg/bg/category/745/15963"
+  },
+  {
+    "id": "15964",
+    "title": "Зона за безопасност около летище Пловдив",
+    "type": "Зони за безопасност около летищата",
+    "file": "15964.geojson",
+    "hash": "42b075e89442808b6ef489b72463880b",
+    "source": "https://www.caa.bg/bg/category/745/15964"
+  },
+  {
+    "id": "15965",
+    "title": "Зона за безопасност около летище Приморско",
+    "type": "Зони за безопасност около летищата",
+    "file": "15965.geojson",
+    "hash": "48586ed0bf9d44b1bdbc256d8496e9db",
+    "source": "https://www.caa.bg/bg/category/745/15965"
+  },
+  {
+    "id": "15966",
+    "title": "Зона за безопасност около летище Русе",
+    "type": "Зони за безопасност около летищата",
+    "file": "15966.geojson",
+    "hash": "79529fcfcb6fe104ca5197a1b6b13633",
+    "source": "https://www.caa.bg/bg/category/745/15966"
+  },
+  {
+    "id": "15967",
+    "title": "Зона за безопасност около летище Сливница",
+    "type": "Зони за безопасност около летищата",
+    "file": "15967.geojson",
+    "hash": "fc2c7aaaeb8466ec9bbdf7f753072442",
+    "source": "https://www.caa.bg/bg/category/745/15967"
+  },
+  {
+    "id": "15968",
+    "title": "Зона за безопасност около летище Слънчев бряг",
+    "type": "Зони за безопасност около летищата",
+    "file": "15968.geojson",
+    "hash": "e0bf355f8a97b2467b91c142e1488c9e",
+    "source": "https://www.caa.bg/bg/category/745/15968"
+  },
+  {
+    "id": "15969",
+    "title": "Зона за безопасност около летище „Васил Левски“ – София запад",
+    "type": "Зони за безопасност около летищата",
+    "file": "15969.geojson",
+    "hash": "7cd588d2ca5d5ae6164c9ed75f5b8737",
+    "source": "https://www.caa.bg/bg/category/745/15969"
+  },
+  {
+    "id": "15970",
+    "title": "Зона за безопасност около летище „Васил Левски“ – София",
+    "type": "Зони за безопасност около летищата",
+    "file": "15970.geojson",
+    "hash": "8c215246b40f678e952f176a6c070e58",
+    "source": "https://www.caa.bg/bg/category/745/15970"
+  },
+  {
+    "id": "15971",
+    "title": "Зона за безопасност около летище Старо селище",
+    "type": "Зони за безопасност около летищата",
+    "file": "15971.geojson",
+    "hash": "79793db17d1ab9da957a57bcb4572802",
+    "source": "https://www.caa.bg/bg/category/745/15971"
+  },
+  {
+    "id": "15972",
+    "title": "Зона за безопасност около летище Студен кладенец",
+    "type": "Зони за безопасност около летищата",
+    "file": "15972.geojson",
+    "hash": "f3d0eb6897443ada15fde980e03d88d5",
+    "source": "https://www.caa.bg/bg/category/745/15972"
+  },
+  {
+    "id": "15973",
+    "title": "Зона за безопасност около летище Цалапица",
+    "type": "Зони за безопасност около летищата",
+    "file": "15973.geojson",
+    "hash": "2d33325f4c0989305014b0744b8d2398",
+    "source": "https://www.caa.bg/bg/category/745/15973"
+  },
+  {
+    "id": "15974",
+    "title": "Зона -С001",
+    "type": "Зоните за координация",
+    "file": "15974.geojson",
+    "hash": "2bf31da6f96bcbc77eebee8a1acd348d",
+    "source": "https://www.caa.bg/bg/category/745/15974"
+  },
+  {
+    "id": "15975",
+    "title": "Зона-С002",
+    "type": "Зоните за координация",
+    "file": "15975.geojson",
+    "hash": "1a7cc01c7ee14b45ef10738b31c9e25e",
+    "source": "https://www.caa.bg/bg/category/745/15975"
+  },
+  {
+    "id": "15976",
+    "title": "Зона-С003",
+    "type": "Зоните за координация",
+    "file": "15976.geojson",
+    "hash": "e93d5ec707dc032cacdf0ff626b0dcb3",
+    "source": "https://www.caa.bg/bg/category/745/15976"
+  },
+  {
+    "id": "15977",
+    "title": "Администрация на затвора в гр. Белене",
+    "type": "Зони за сигурност",
+    "file": "15977.geojson",
+    "hash": "473a0815c161fe8842e55dac0499aed8",
+    "source": "https://www.caa.bg/bg/category/745/15977"
+  },
+  {
+    "id": "15978",
+    "title": "Арест гр. София",
+    "type": "Зони за сигурност",
+    "file": "15978.geojson",
+    "hash": "be1dfc2fe2bc20849fcde6f92ef20629",
+    "source": "https://www.caa.bg/bg/category/745/15978"
+  },
+  {
+    "id": "15979",
+    "title": "Затвор Бобов дол",
+    "type": "Зони за сигурност",
+    "file": "15979.geojson",
+    "hash": "08624a8b7f7852d209db633e0309c2ce",
+    "source": "https://www.caa.bg/bg/category/745/15979"
+  },
+  {
+    "id": "15980",
+    "title": "Затвор Бургас",
+    "type": "Зони за сигурност",
+    "file": "15980.geojson",
+    "hash": "625ad1ae3c5ee199877452288af49e3e",
+    "source": "https://www.caa.bg/bg/category/745/15980"
+  },
+  {
+    "id": "15981",
+    "title": "Затвор гр. Белене",
+    "type": "Зони за сигурност",
+    "file": "15981.geojson",
+    "hash": "1f827281cf9f73ba839ea7a81340c3c7",
+    "source": "https://www.caa.bg/bg/category/745/15981"
+  },
+  {
+    "id": "15982",
+    "title": "Затвор гр. Варна",
+    "type": "Зони за сигурност",
+    "file": "15982.geojson",
+    "hash": "824a880bf21714bd949dc3e191536489",
+    "source": "https://www.caa.bg/bg/category/745/15982"
+  },
+  {
+    "id": "15983",
+    "title": "Затвор гр. Враца",
+    "type": "Зони за сигурност",
+    "file": "15983.geojson",
+    "hash": "52ed8171811adc15b101358e15423a2d",
+    "source": "https://www.caa.bg/bg/category/745/15983"
+  },
+  {
+    "id": "15984",
+    "title": "Затвор гр. Ловеч",
+    "type": "Зони за сигурност",
+    "file": "15984.geojson",
+    "hash": "66465f881f566c4aea88fa3d95c6b799",
+    "source": "https://www.caa.bg/bg/category/745/15984"
+  },
+  {
+    "id": "15985",
+    "title": "Затвор гр. Пазарджик",
+    "type": "Зони за сигурност",
+    "file": "15985.geojson",
+    "hash": "b13aebda200ceca5c9ed8c4e887ff2aa",
+    "source": "https://www.caa.bg/bg/category/745/15985"
+  },
+  {
+    "id": "15986",
+    "title": "Затвор гр. Плевен",
+    "type": "Зони за сигурност",
+    "file": "15986.geojson",
+    "hash": "a810ff3b62037f3429202e1a3d30fc7e",
+    "source": "https://www.caa.bg/bg/category/745/15986"
+  },
+  {
+    "id": "15987",
+    "title": "Затвор гр. Пловдив",
+    "type": "Зони за сигурност",
+    "file": "15987.geojson",
+    "hash": "50a639dd12675ca4302a8e90a4004263",
+    "source": "https://www.caa.bg/bg/category/745/15987"
+  },
+  {
+    "id": "15988",
+    "title": "Затвор гр. Сливен",
+    "type": "Зони за сигурност",
+    "file": "15988.geojson",
+    "hash": "f7026523191ae80ed0a859fb61305e81",
+    "source": "https://www.caa.bg/bg/category/745/15988"
+  },
+  {
+    "id": "15989",
+    "title": "Затвор гр. Стара Загора",
+    "type": "Зони за сигурност",
+    "file": "15989.geojson",
+    "hash": "2ae006f3691ea97dc45a4f976b2a1fe6",
+    "source": "https://www.caa.bg/bg/category/745/15989"
+  },
+  {
+    "id": "15990",
+    "title": "Затвор София",
+    "type": "Зони за сигурност",
+    "file": "15990.geojson",
+    "hash": "43638b46daffb94d6ca47d29659bde7c",
+    "source": "https://www.caa.bg/bg/category/745/15990"
+  },
+  {
+    "id": "15991",
+    "title": "ЗО гр. Бойчиновци",
+    "type": "Зони за сигурност",
+    "file": "15991.geojson",
+    "hash": "966034776185fc92e2088d1f484966e6",
+    "source": "https://www.caa.bg/bg/category/745/15991"
+  },
+  {
+    "id": "15992",
+    "title": "ЗО Дебелт - с. Дебелт",
+    "type": "Зони за сигурност",
+    "file": "15992.geojson",
+    "hash": "2e1205a463c9586e1c5ff7f61e9201fc",
+    "source": "https://www.caa.bg/bg/category/745/15992"
+  },
+  {
+    "id": "15993",
+    "title": "ЗО Казичене",
+    "type": "Зони за сигурност",
+    "file": "15993.geojson",
+    "hash": "1cb26f0b64d9f842bcc9f18d87aa5d27",
+    "source": "https://www.caa.bg/bg/category/745/15993"
+  },
+  {
+    "id": "15994",
+    "title": "ЗО Керамична фабрика",
+    "type": "Зони за сигурност",
+    "file": "15994.geojson",
+    "hash": "8dfa3fddfe537abb317b823329f22b79",
+    "source": "https://www.caa.bg/bg/category/745/15994"
+  },
+  {
+    "id": "15995",
+    "title": "ЗО Кремиковци",
+    "type": "Зони за сигурност",
+    "file": "15995.geojson",
+    "hash": "29757fe4949e404ecaeac0cea5cf5468",
+    "source": "https://www.caa.bg/bg/category/745/15995"
+  },
+  {
+    "id": "15996",
+    "title": "ЗО Самораново - с. Самораново",
+    "type": "Зони за сигурност",
+    "file": "15996.geojson",
+    "hash": "bb437593ea7ddbcdedc67854eff86e6e",
+    "source": "https://www.caa.bg/bg/category/745/15996"
+  },
+  {
+    "id": "15997",
+    "title": "ЗО Хеброс - гр. Пловдив",
+    "type": "Зони за сигурност",
+    "file": "15997.geojson",
+    "hash": "900d3c0e1e139ff24f310920b7a42d89",
+    "source": "https://www.caa.bg/bg/category/745/15997"
+  },
+  {
+    "id": "15998",
+    "title": "ЗОЗТ Атлант - гр. Троян",
+    "type": "Зони за сигурност",
+    "file": "15998.geojson",
+    "hash": "8c22ccfcfc51d265a8c1d704e478c042",
+    "source": "https://www.caa.bg/bg/category/745/15998"
+  },
+  {
+    "id": "15999",
+    "title": "ЗОЗТ Разделна",
+    "type": "Зони за сигурност",
+    "file": "15999.geojson",
+    "hash": "42790e124a1691ead67e0127df24a35b",
+    "source": "https://www.caa.bg/bg/category/745/15999"
+  },
+  {
+    "id": "16000",
+    "title": "ЗОЗТ Черна гора",
+    "type": "Зони за сигурност",
+    "file": "16000.geojson",
+    "hash": "7e2964e812cc26db6e57de99e7a408a9",
+    "source": "https://www.caa.bg/bg/category/745/16000"
+  },
+  {
+    "id": "16003",
+    "title": "Зона.със-Северна Македония",
+    "type": "Зони за сигурност",
+    "file": "16003.geojson",
+    "hash": "3c8bc273fbbe4314dbc5df064aa25aff",
+    "source": "https://www.caa.bg/bg/category/745/16003"
+  },
+  {
+    "id": "16004",
+    "title": "Зона-Д0",
+    "type": "Зони за сигурност",
+    "file": "16004.geojson",
+    "hash": "e4e7a99e7bcd6b6fb7c6eb3056633f97",
+    "source": "https://www.caa.bg/bg/category/745/16004"
+  },
+  {
+    "id": "16005",
+    "title": "Зона-Д1",
+    "type": "Зони за сигурност",
+    "file": "16005.geojson",
+    "hash": "58d76982aa6320f4c31d2e3ce02916e9",
+    "source": "https://www.caa.bg/bg/category/745/16005"
+  },
+  {
+    "id": "16006",
+    "title": "Зона-Д2",
+    "type": "Зони за сигурност",
+    "file": "16006.geojson",
+    "hash": "3f2fb710aa8f240d272844b5d723ec4e",
+    "source": "https://www.caa.bg/bg/category/745/16006"
+  },
+  {
+    "id": "16007",
+    "title": "Зона-Д3",
+    "type": "Зони за сигурност",
+    "file": "16007.geojson",
+    "hash": "835b500efec953c9b40a1e814c234f57",
+    "source": "https://www.caa.bg/bg/category/745/16007"
+  },
+  {
+    "id": "16008",
+    "title": "Зона-Д4",
+    "type": "Зони за сигурност",
+    "file": "16008.geojson",
+    "hash": "27a22ac1c9d33fc523cbcfdae442504c",
+    "source": "https://www.caa.bg/bg/category/745/16008"
+  },
+  {
+    "id": "16009",
+    "title": "Зона-Д5",
+    "type": "Зони за сигурност",
+    "file": "16009.geojson",
+    "hash": "4526572d5127c387b702f87c99654c7a",
+    "source": "https://www.caa.bg/bg/category/745/16009"
+  },
+  {
+    "id": "16010",
+    "title": "Зона-Д6",
+    "type": "Зони за сигурност",
+    "file": "16010.geojson",
+    "hash": "92cb3cb891f6afe409440695f2b4bbe1",
+    "source": "https://www.caa.bg/bg/category/745/16010"
+  },
+  {
+    "id": "16011",
+    "title": "Зона-Д7",
+    "type": "Зони за сигурност",
+    "file": "16011.geojson",
+    "hash": "9a6a19f7affd089e4525cef267f89e7f",
+    "source": "https://www.caa.bg/bg/category/745/16011"
+  },
+  {
+    "id": "16014",
+    "title": "Зона-И-000",
+    "type": "Зони за сигурност",
+    "file": "16014.geojson",
+    "hash": "1ceefd051c1cfb6e627e0eacf015ce5a",
+    "source": "https://www.caa.bg/bg/category/745/16014"
+  },
+  {
+    "id": "16015",
+    "title": "Зона-И22",
+    "type": "Зони за сигурност",
+    "file": "16015.geojson",
+    "hash": "a4705aac05a1b15961b05069155b013b",
+    "source": "https://www.caa.bg/bg/category/745/16015"
+  },
+  {
+    "id": "16016",
+    "title": "Зона-И23",
+    "type": "Зони за сигурност",
+    "file": "16016.geojson",
+    "hash": "2e3bf528a69de5f3573732a28f347b79",
+    "source": "https://www.caa.bg/bg/category/745/16016"
+  },
+  {
+    "id": "16017",
+    "title": "Зона-И24",
+    "type": "Зони за сигурност",
+    "file": "16017.geojson",
+    "hash": "d8846b60d9e908db434fd5740a4684b1",
+    "source": "https://www.caa.bg/bg/category/745/16017"
+  },
+  {
+    "id": "16018",
+    "title": "Зона-И26",
+    "type": "Зони за сигурност",
+    "file": "16018.geojson",
+    "hash": "dae8a8961a73c5fa5a4974218f521e03",
+    "source": "https://www.caa.bg/bg/category/745/16018"
+  },
+  {
+    "id": "16019",
+    "title": "Зона-И31",
+    "type": "Зони за сигурност",
+    "file": "16019.geojson",
+    "hash": "e27f9b2abca30c99c0d0ddeac020b7db",
+    "source": "https://www.caa.bg/bg/category/745/16019"
+  },
+  {
+    "id": "16020",
+    "title": "Зона-И32",
+    "type": "Зони за сигурност",
+    "file": "16020.geojson",
+    "hash": "b51039de936c56c67917049a74f5bb78",
+    "source": "https://www.caa.bg/bg/category/745/16020"
+  },
+  {
+    "id": "16021",
+    "title": "Зона-И34",
+    "type": "Зони за сигурност",
+    "file": "16021.geojson",
+    "hash": "ad1980904afd5df432dc9b26ffeec4e8",
+    "source": "https://www.caa.bg/bg/category/745/16021"
+  },
+  {
+    "id": "16022",
+    "title": "Зона-И35",
+    "type": "Зони за сигурност",
+    "file": "16022.geojson",
+    "hash": "31a9985b5b6b01776f9191da8aa8d21e",
+    "source": "https://www.caa.bg/bg/category/745/16022"
+  },
+  {
+    "id": "16023",
+    "title": "Зона-И36",
+    "type": "Зони за сигурност",
+    "file": "16023.geojson",
+    "hash": "1546ebcc8fa298cfd3f79d3190971727",
+    "source": "https://www.caa.bg/bg/category/745/16023"
+  },
+  {
+    "id": "16024",
+    "title": "Зона-И37",
+    "type": "Зони за сигурност",
+    "file": "16024.geojson",
+    "hash": "f73b13a4802196142e39b88e7119b2cd",
+    "source": "https://www.caa.bg/bg/category/745/16024"
+  },
+  {
+    "id": "16025",
+    "title": "Зона-И39",
+    "type": "Зони за сигурност",
+    "file": "16025.geojson",
+    "hash": "cb8075299e520e473f49266abd93081e",
+    "source": "https://www.caa.bg/bg/category/745/16025"
+  },
+  {
+    "id": "16026",
+    "title": "Зона-И41",
+    "type": "Зони за сигурност",
+    "file": "16026.geojson",
+    "hash": "130f4c62e103d878199ca90a84c7092b",
+    "source": "https://www.caa.bg/bg/category/745/16026"
+  },
+  {
+    "id": "16027",
+    "title": "Зона-И42",
+    "type": "Зони за сигурност",
+    "file": "16027.geojson",
+    "hash": "e5374e0f49e97ad54bcc2f6dfb90ff3f",
+    "source": "https://www.caa.bg/bg/category/745/16027"
+  },
+  {
+    "id": "16028",
+    "title": "Зона-И61",
+    "type": "Зони за сигурност",
+    "file": "16028.geojson",
+    "hash": "2f7e8955731cee139bf5055eac3afaa1",
+    "source": "https://www.caa.bg/bg/category/745/16028"
+  },
+  {
+    "id": "16029",
+    "title": "Зона-И62",
+    "type": "Зони за сигурност",
+    "file": "16029.geojson",
+    "hash": "9a8813ec6322bab1baccccfe9136ea4a",
+    "source": "https://www.caa.bg/bg/category/745/16029"
+  },
+  {
+    "id": "16030",
+    "title": "Зона-И63",
+    "type": "Зони за сигурност",
+    "file": "16030.geojson",
+    "hash": "c6d6b41038e2588e68aab6a00d8dff64",
+    "source": "https://www.caa.bg/bg/category/745/16030"
+  },
+  {
+    "id": "16031",
+    "title": "Зона-И64",
+    "type": "Зони за сигурност",
+    "file": "16031.geojson",
+    "hash": "b20e8f6870d45d530630d8ff147e8616",
+    "source": "https://www.caa.bg/bg/category/745/16031"
+  },
+  {
+    "id": "16032",
+    "title": "Зона-И65",
+    "type": "Зони за сигурност",
+    "file": "16032.geojson",
+    "hash": "ffb8e42fef3d505d28d3927ea2f8c401",
+    "source": "https://www.caa.bg/bg/category/745/16032"
+  },
+  {
+    "id": "16033",
+    "title": "Зона-И66",
+    "type": "Зони за сигурност",
+    "file": "16033.geojson",
+    "hash": "7096996920829aaba36b74836edbb376",
+    "source": "https://www.caa.bg/bg/category/745/16033"
+  },
+  {
+    "id": "16034",
+    "title": "Зона-И67",
+    "type": "Зони за сигурност",
+    "file": "16034.geojson",
+    "hash": "928741c2a73ee957828f700cd53caad8",
+    "source": "https://www.caa.bg/bg/category/745/16034"
+  },
+  {
+    "id": "16035",
+    "title": "Зона-И68",
+    "type": "Зони за сигурност",
+    "file": "16035.geojson",
+    "hash": "01a96c700f0aad34c66fb2f832aad348",
+    "source": "https://www.caa.bg/bg/category/745/16035"
+  },
+  {
+    "id": "16036",
+    "title": "Зона-И73",
+    "type": "Зони за сигурност",
+    "file": "16036.geojson",
+    "hash": "625303587dbc41636eba2ec14e151158",
+    "source": "https://www.caa.bg/bg/category/745/16036"
+  },
+  {
+    "id": "16037",
+    "title": "Зона-И81",
+    "type": "Зони за сигурност",
+    "file": "16037.geojson",
+    "hash": "34d6c24273ff5d4e00afd7788cfc1f40",
+    "source": "https://www.caa.bg/bg/category/745/16037"
+  },
+  {
+    "id": "16038",
+    "title": "Зона-И82",
+    "type": "Зони за сигурност",
+    "file": "16038.geojson",
+    "hash": "7c398a44653698add1a96dbea1eda532",
+    "source": "https://www.caa.bg/bg/category/745/16038"
+  },
+  {
+    "id": "16039",
+    "title": "Зона-И83",
+    "type": "Зони за сигурност",
+    "file": "16039.geojson",
+    "hash": "275c9afc73f4a6081074dd16d4b32cea",
+    "source": "https://www.caa.bg/bg/category/745/16039"
+  },
+  {
+    "id": "16040",
+    "title": "Зона-И121",
+    "type": "Зони за сигурност",
+    "file": "16040.geojson",
+    "hash": "0e2b54d8cb957a91b2a42e197aec63ef",
+    "source": "https://www.caa.bg/bg/category/745/16040"
+  },
+  {
+    "id": "16041",
+    "title": "Зона-И122",
+    "type": "Зони за сигурност",
+    "file": "16041.geojson",
+    "hash": "b8114c9d9911c750a12bf48d2824177a",
+    "source": "https://www.caa.bg/bg/category/745/16041"
+  },
+  {
+    "id": "16042",
+    "title": "Зона-О-101",
+    "type": "Зони за сигурност",
+    "file": "16042.geojson",
+    "hash": "0aecece74c79123549cc2768837c83cf",
+    "source": "https://www.caa.bg/bg/category/745/16042"
+  },
+  {
+    "id": "16043",
+    "title": "Зона-О-102",
+    "type": "Зони за сигурност",
+    "file": "16043.geojson",
+    "hash": "7142b1b84efe6b8d3555b016fe67588e",
+    "source": "https://www.caa.bg/bg/category/745/16043"
+  },
+  {
+    "id": "16044",
+    "title": "Зона-О103",
+    "type": "Зони за сигурност",
+    "file": "16044.geojson",
+    "hash": "3832d33577f48b200f0a00b3da8198ab",
+    "source": "https://www.caa.bg/bg/category/745/16044"
+  },
+  {
+    "id": "16045",
+    "title": "Зона-О104",
+    "type": "Зони за сигурност",
+    "file": "16045.geojson",
+    "hash": "f167bade375a10e744d95c9497976c29",
+    "source": "https://www.caa.bg/bg/category/745/16045"
+  },
+  {
+    "id": "16046",
+    "title": "Зона-О105",
+    "type": "Зони за сигурност",
+    "file": "16046.geojson",
+    "hash": "615e8e844d3537b512c6b58d2a35c28a",
+    "source": "https://www.caa.bg/bg/category/745/16046"
+  },
+  {
+    "id": "16047",
+    "title": "Зона-О106",
+    "type": "Зони за сигурност",
+    "file": "16047.geojson",
+    "hash": "403cb1a44c008f89b312bb7d9d287238",
+    "source": "https://www.caa.bg/bg/category/745/16047"
+  },
+  {
+    "id": "16048",
+    "title": "Зона-О107",
+    "type": "Зони за сигурност",
+    "file": "16048.geojson",
+    "hash": "c68d558e3a5f8e847f512227e0d83eb1",
+    "source": "https://www.caa.bg/bg/category/745/16048"
+  },
+  {
+    "id": "16049",
+    "title": "Зона-О108",
+    "type": "Зони за сигурност",
+    "file": "16049.geojson",
+    "hash": "af33036bdd42aa57d30c143e41c5fb06",
+    "source": "https://www.caa.bg/bg/category/745/16049"
+  },
+  {
+    "id": "16050",
+    "title": "Зона-О109",
+    "type": "Зони за сигурност",
+    "file": "16050.geojson",
+    "hash": "d2b0d8944f9223240b68c057565315ad",
+    "source": "https://www.caa.bg/bg/category/745/16050"
+  },
+  {
+    "id": "16051",
+    "title": "Зона-О110",
+    "type": "Зони за сигурност",
+    "file": "16051.geojson",
+    "hash": "ec2d796e6a01c9f735a90578a93b9262",
+    "source": "https://www.caa.bg/bg/category/745/16051"
+  },
+  {
+    "id": "16052",
+    "title": "Зона-О111",
+    "type": "Зони за сигурност",
+    "file": "16052.geojson",
+    "hash": "8c9052f29eca83f48c8cca9db1a81163",
+    "source": "https://www.caa.bg/bg/category/745/16052"
+  },
+  {
+    "id": "16053",
+    "title": "Зона-О112",
+    "type": "Зони за сигурност",
+    "file": "16053.geojson",
+    "hash": "daded232011bbac7fc7832f4461e81c1",
+    "source": "https://www.caa.bg/bg/category/745/16053"
+  },
+  {
+    "id": "16054",
+    "title": "Зона-О-113",
+    "type": "Зони за сигурност",
+    "file": "16054.geojson",
+    "hash": "bfed96832220efbc7f71c8c13a4fd8aa",
+    "source": "https://www.caa.bg/bg/category/745/16054"
+  },
+  {
+    "id": "16055",
+    "title": "Зона-О-114",
+    "type": "Зони за сигурност",
+    "file": "16055.geojson",
+    "hash": "f09530df20a9cc95d893cf9db36f68a1",
+    "source": "https://www.caa.bg/bg/category/745/16055"
+  },
+  {
+    "id": "16056",
+    "title": "Зона-О-115",
+    "type": "Зони за сигурност",
+    "file": "16056.geojson",
+    "hash": "e787815d2c5746f3524ab0e7ee5c4fdf",
+    "source": "https://www.caa.bg/bg/category/745/16056"
+  },
+  {
+    "id": "16057",
+    "title": "Зона-О116",
+    "type": "Зони за сигурност",
+    "file": "16057.geojson",
+    "hash": "9f87e4df0ad0b359916c630d8f7eb906",
+    "source": "https://www.caa.bg/bg/category/745/16057"
+  },
+  {
+    "id": "16058",
+    "title": "Зона-О-117",
+    "type": "Зони за сигурност",
+    "file": "16058.geojson",
+    "hash": "22f8f3d60aad263e87bc19c3ecd1b49a",
+    "source": "https://www.caa.bg/bg/category/745/16058"
+  },
+  {
+    "id": "16059",
+    "title": "Зона-О-118",
+    "type": "Зони за сигурност",
+    "file": "16059.geojson",
+    "hash": "d4c108baee44a49d506f1f21f6b0e90e",
+    "source": "https://www.caa.bg/bg/category/745/16059"
+  },
+  {
+    "id": "16060",
+    "title": "Зона-О-119",
+    "type": "Зони за сигурност",
+    "file": "16060.geojson",
+    "hash": "771be53953fb2a6ff6a30229119b2b98",
+    "source": "https://www.caa.bg/bg/category/745/16060"
+  },
+  {
+    "id": "16061",
+    "title": "Зона-О120",
+    "type": "Зони за сигурност",
+    "file": "16061.geojson",
+    "hash": "b9640528da64531511bb3d28390187f5",
+    "source": "https://www.caa.bg/bg/category/745/16061"
+  },
+  {
+    "id": "16062",
+    "title": "Зона-О150",
+    "type": "Зони за сигурност",
+    "file": "16062.geojson",
+    "hash": "ec3d3854521c216e05a3ca80342e645d",
+    "source": "https://www.caa.bg/bg/category/745/16062"
+  },
+  {
+    "id": "16063",
+    "title": "Зона-О201",
+    "type": "Зони за сигурност",
+    "file": "16063.geojson",
+    "hash": "d36376c17d9b48220745722d6b5bacd1",
+    "source": "https://www.caa.bg/bg/category/745/16063"
+  },
+  {
+    "id": "16064",
+    "title": "Зона-О202",
+    "type": "Зони за сигурност",
+    "file": "16064.geojson",
+    "hash": "ff3ebdbf5b91c17c1efdb62bae733e50",
+    "source": "https://www.caa.bg/bg/category/745/16064"
+  },
+  {
+    "id": "16065",
+    "title": "Зона-О203=D201",
+    "type": "Зони за сигурност",
+    "file": "16065.geojson",
+    "hash": "5fe571dd671ed2edc59ea8c7f4271307",
+    "source": "https://www.caa.bg/bg/category/745/16065"
+  },
+  {
+    "id": "16066",
+    "title": "Зона-О204",
+    "type": "Зони за сигурност",
+    "file": "16066.geojson",
+    "hash": "88dd828aebc2bc9673edb5ad9ffcc9b4",
+    "source": "https://www.caa.bg/bg/category/745/16066"
+  },
+  {
+    "id": "16067",
+    "title": "Зона-О205",
+    "type": "Зони за сигурност",
+    "file": "16067.geojson",
+    "hash": "b6081c7b89c8ab028d488763916ba5d1",
+    "source": "https://www.caa.bg/bg/category/745/16067"
+  },
+  {
+    "id": "16068",
+    "title": "Зона-О206",
+    "type": "Зони за сигурност",
+    "file": "16068.geojson",
+    "hash": "f6845f2bc5cdaecd3b408c2cdc960d80",
+    "source": "https://www.caa.bg/bg/category/745/16068"
+  },
+  {
+    "id": "16069",
+    "title": "Зона-О207=D223",
+    "type": "Зони за сигурност",
+    "file": "16069.geojson",
+    "hash": "ccdafb8a31c8ccc7221a1259bbbee25c",
+    "source": "https://www.caa.bg/bg/category/745/16069"
+  },
+  {
+    "id": "16070",
+    "title": "Зона-О208",
+    "type": "Зони за сигурност",
+    "file": "16070.geojson",
+    "hash": "eedd0af353ead2c9be87716552db71aa",
+    "source": "https://www.caa.bg/bg/category/745/16070"
+  },
+  {
+    "id": "16071",
+    "title": "Зона-О209=D207",
+    "type": "Зони за сигурност",
+    "file": "16071.geojson",
+    "hash": "a0264dbcdb0c66228a64f5bfd1d7e5bf",
+    "source": "https://www.caa.bg/bg/category/745/16071"
+  },
+  {
+    "id": "16072",
+    "title": "Зона-О210",
+    "type": "Зони за сигурност",
+    "file": "16072.geojson",
+    "hash": "25b85374d47ba4e8ea52a887d12022df",
+    "source": "https://www.caa.bg/bg/category/745/16072"
+  },
+  {
+    "id": "16073",
+    "title": "Зона-О-211",
+    "type": "Зони за сигурност",
+    "file": "16073.geojson",
+    "hash": "d80c9aa07db66a62dd9ff8e301355bc8",
+    "source": "https://www.caa.bg/bg/category/745/16073"
+  },
+  {
+    "id": "16074",
+    "title": "Зона-О212",
+    "type": "Зони за сигурност",
+    "file": "16074.geojson",
+    "hash": "4d09f4d436f766ecc27446fb684d5401",
+    "source": "https://www.caa.bg/bg/category/745/16074"
+  },
+  {
+    "id": "16075",
+    "title": "Зона-О213",
+    "type": "Зони за сигурност",
+    "file": "16075.geojson",
+    "hash": "5b15df270effa2f523752de1aee60b7f",
+    "source": "https://www.caa.bg/bg/category/745/16075"
+  },
+  {
+    "id": "16076",
+    "title": "Зона-О214",
+    "type": "Зони за сигурност",
+    "file": "16076.geojson",
+    "hash": "70b1ae5451f3546acba4557d282a05f1",
+    "source": "https://www.caa.bg/bg/category/745/16076"
+  },
+  {
+    "id": "16077",
+    "title": "Зона-О215",
+    "type": "Зони за сигурност",
+    "file": "16077.geojson",
+    "hash": "3b4bec31167f2144d8342d5e461dcb34",
+    "source": "https://www.caa.bg/bg/category/745/16077"
+  },
+  {
+    "id": "16078",
+    "title": "Зона-О216=D245",
+    "type": "Зони за сигурност",
+    "file": "16078.geojson",
+    "hash": "964834195cffc34348c0017421bd6d7e",
+    "source": "https://www.caa.bg/bg/category/745/16078"
+  },
+  {
+    "id": "16079",
+    "title": "Зона-О217",
+    "type": "Зони за сигурност",
+    "file": "16079.geojson",
+    "hash": "70f6be4117a9c385e3e44ff0b615da48",
+    "source": "https://www.caa.bg/bg/category/745/16079"
+  },
+  {
+    "id": "16080",
+    "title": "Зона-О218",
+    "type": "Зони за сигурност",
+    "file": "16080.geojson",
+    "hash": "dda51c46250bab013281ba7ab71573f9",
+    "source": "https://www.caa.bg/bg/category/745/16080"
+  },
+  {
+    "id": "16081",
+    "title": "Зона-О219=D232",
+    "type": "Зони за сигурност",
+    "file": "16081.geojson",
+    "hash": "b296636f41bbf949b1a71b90259481a6",
+    "source": "https://www.caa.bg/bg/category/745/16081"
+  },
+  {
+    "id": "16082",
+    "title": "Зона-О220=D212",
+    "type": "Зони за сигурност",
+    "file": "16082.geojson",
+    "hash": "0f652720a3595bf675c28670c5732b18",
+    "source": "https://www.caa.bg/bg/category/745/16082"
+  },
+  {
+    "id": "16083",
+    "title": "Зона-О-221",
+    "type": "Зони за сигурност",
+    "file": "16083.geojson",
+    "hash": "ad4937bdd8ab81d775d92b44d1e28e01",
+    "source": "https://www.caa.bg/bg/category/745/16083"
+  },
+  {
+    "id": "16084",
+    "title": "Зона-О222",
+    "type": "Зони за сигурност",
+    "file": "16084.geojson",
+    "hash": "deb95d0cbf6b49ecc23f7b279bede5af",
+    "source": "https://www.caa.bg/bg/category/745/16084"
+  },
+  {
+    "id": "16085",
+    "title": "Зона-О-223=D243",
+    "type": "Зони за сигурност",
+    "file": "16085.geojson",
+    "hash": "b5fe983c1d2bc46244bd85b9e355be10",
+    "source": "https://www.caa.bg/bg/category/745/16085"
+  },
+  {
+    "id": "16086",
+    "title": "Зона-О224",
+    "type": "Зони за сигурност",
+    "file": "16086.geojson",
+    "hash": "f71cf4103ffe6d0079520c7971cbdceb",
+    "source": "https://www.caa.bg/bg/category/745/16086"
+  },
+  {
+    "id": "16087",
+    "title": "Зона-О225",
+    "type": "Зони за сигурност",
+    "file": "16087.geojson",
+    "hash": "df9a39025c8b978006047a7fbfbcd5af",
+    "source": "https://www.caa.bg/bg/category/745/16087"
+  },
+  {
+    "id": "16088",
+    "title": "Зона-О226",
+    "type": "Зони за сигурност",
+    "file": "16088.geojson",
+    "hash": "d8dfcf2685f36dfca3fc5790e44e79af",
+    "source": "https://www.caa.bg/bg/category/745/16088"
+  },
+  {
+    "id": "16089",
+    "title": "Зона-О227",
+    "type": "Зони за сигурност",
+    "file": "16089.geojson",
+    "hash": "6c01349fa6c6f0c5957ed9a34f024deb",
+    "source": "https://www.caa.bg/bg/category/745/16089"
+  },
+  {
+    "id": "16090",
+    "title": "Зона-О228=D250",
+    "type": "Зони за сигурност",
+    "file": "16090.geojson",
+    "hash": "1456f048ffbcbdd9f8b91c3c5ca08ef6",
+    "source": "https://www.caa.bg/bg/category/745/16090"
+  },
+  {
+    "id": "16091",
+    "title": "Зона-О229",
+    "type": "Зони за сигурност",
+    "file": "16091.geojson",
+    "hash": "9e0b39eb110441ea4ea9a81ef5bcff2b",
+    "source": "https://www.caa.bg/bg/category/745/16091"
+  },
+  {
+    "id": "16092",
+    "title": "Зона-О230",
+    "type": "Зони за сигурност",
+    "file": "16092.geojson",
+    "hash": "1103428eadc69dab909e269963fd76b7",
+    "source": "https://www.caa.bg/bg/category/745/16092"
+  },
+  {
+    "id": "16093",
+    "title": "Зона-О231",
+    "type": "Зони за сигурност",
+    "file": "16093.geojson",
+    "hash": "bd16ff5120e8f163c3ca33bdd37e718e",
+    "source": "https://www.caa.bg/bg/category/745/16093"
+  },
+  {
+    "id": "16094",
+    "title": "Зона-О232",
+    "type": "Зони за сигурност",
+    "file": "16094.geojson",
+    "hash": "4d6bf37953c0b6354a828a22d623337c",
+    "source": "https://www.caa.bg/bg/category/745/16094"
+  },
+  {
+    "id": "16095",
+    "title": "Зона-О233=D249",
+    "type": "Зони за сигурност",
+    "file": "16095.geojson",
+    "hash": "9480d03b2eef694316597fdd717cbf77",
+    "source": "https://www.caa.bg/bg/category/745/16095"
+  },
+  {
+    "id": "16096",
+    "title": "Зона-с-Гърция",
+    "type": "Зони за сигурност",
+    "file": "16096.geojson",
+    "hash": "b15b3e939dceca87617b413e2e743d51",
+    "source": "https://www.caa.bg/bg/category/745/16096"
+  },
+  {
+    "id": "16097",
+    "title": "Зона-с-Румъния",
+    "type": "Зони за сигурност",
+    "file": "16097.geojson",
+    "hash": "a274e93427e0daa5a2226503d5be1280",
+    "source": "https://www.caa.bg/bg/category/745/16097"
+  },
+  {
+    "id": "16098",
+    "title": "Зона-с-Турция",
+    "type": "Зони за сигурност",
+    "file": "16098.geojson",
+    "hash": "028e944cf098839f630bf79916d57ff5",
+    "source": "https://www.caa.bg/bg/category/745/16098"
+  },
+  {
+    "id": "16099",
+    "title": "Зона-със-Сърбия",
+    "type": "Зони за сигурност",
+    "file": "16099.geojson",
+    "hash": "56da5c344a77e7da38502c99a5c043a1",
+    "source": "https://www.caa.bg/bg/category/745/16099"
+  },
+  {
+    "id": "16100",
+    "title": "ЗООТ Белене",
+    "type": "Зони за сигурност",
+    "file": "16100.geojson",
+    "hash": "8bd7534ca421cef317b981c4e9c93064",
+    "source": "https://www.caa.bg/bg/category/745/16100"
+  },
+  {
+    "id": "16101",
+    "title": "ЗООТ В. Търново",
+    "type": "Зони за сигурност",
+    "file": "16101.geojson",
+    "hash": "49b62464afe51e38abb96fea757aa67a",
+    "source": "https://www.caa.bg/bg/category/745/16101"
+  },
+  {
+    "id": "16102",
+    "title": "ЗООТ гр. Смолян",
+    "type": "Зони за сигурност",
+    "file": "16102.geojson",
+    "hash": "a585ea82ed425460f8a4b8bbdeb118a0",
+    "source": "https://www.caa.bg/bg/category/745/16102"
+  },
+  {
+    "id": "16103",
+    "title": "ЗООТ Житарово - гр. Бургас",
+    "type": "Зони за сигурност",
+    "file": "16103.geojson",
+    "hash": "2490d668e6601ded484543f2fa95497e",
+    "source": "https://www.caa.bg/bg/category/745/16103"
+  },
+  {
+    "id": "16104",
+    "title": "ЗООТ Плевен",
+    "type": "Зони за сигурност",
+    "file": "16104.geojson",
+    "hash": "2a7c20d966af82225027f1fbae3b236a",
+    "source": "https://www.caa.bg/bg/category/745/16104"
+  },
+  {
+    "id": "16105",
+    "title": "ЗООТ Полигона - гл. Ловеч",
+    "type": "Зони за сигурност",
+    "file": "16105.geojson",
+    "hash": "09dbbf6eb0ebf38d88115692a937cc4c",
+    "source": "https://www.caa.bg/bg/category/745/16105"
+  },
+  {
+    "id": "16106",
+    "title": "ЗООТ Рамануша“-гр. Сливен",
+    "type": "Зони за сигурност",
+    "file": "16106.geojson",
+    "hash": "819f4f08fa97b72e7f0da7122e21fa3a",
+    "source": "https://www.caa.bg/bg/category/745/16106"
+  },
+  {
+    "id": "16107",
+    "title": "ЗООТ Стара Загора",
+    "type": "Зони за сигурност",
+    "file": "16107.geojson",
+    "hash": "b6d6c85dc83a82faf686afb5b4c41090",
+    "source": "https://www.caa.bg/bg/category/745/16107"
+  },
+  {
+    "id": "16110",
+    "title": "Зона-О233=D249",
+    "type": "Зони за сигурност",
+    "file": "16110.geojson",
+    "hash": "225818cca907a34f9c9674d82f5a4578",
+    "source": "https://www.caa.bg/bg/category/745/16110"
+  },
+  {
+    "id": "16111",
+    "title": "Зона-О234",
+    "type": "Зони за сигурност",
+    "file": "16111.geojson",
+    "hash": "31bf7019cd5c0f8546ad63e2381b3cea",
+    "source": "https://www.caa.bg/bg/category/745/16111"
+  },
+  {
+    "id": "16112",
+    "title": "Зона-О235",
+    "type": "Зони за сигурност",
+    "file": "16112.geojson",
+    "hash": "a709a786af165abbb6b35cc15e64f04e",
+    "source": "https://www.caa.bg/bg/category/745/16112"
+  },
+  {
+    "id": "16113",
+    "title": "Зона-О236=D242",
+    "type": "Зони за сигурност",
+    "file": "16113.geojson",
+    "hash": "8c394b74155f0d691947af2a641a69fb",
+    "source": "https://www.caa.bg/bg/category/745/16113"
+  },
+  {
+    "id": "16114",
+    "title": "Зона-О237=D303",
+    "type": "Зони за сигурност",
+    "file": "16114.geojson",
+    "hash": "46a25e4cbb7e8758f3ed3d20ec38a25b",
+    "source": "https://www.caa.bg/bg/category/745/16114"
+  },
+  {
+    "id": "16115",
+    "title": "Зона-О238",
+    "type": "Зони за сигурност",
+    "file": "16115.geojson",
+    "hash": "3b390aff478a881875d9fc8ed5d2406f",
+    "source": "https://www.caa.bg/bg/category/745/16115"
+  },
+  {
+    "id": "16116",
+    "title": "Зона-О239",
+    "type": "Зони за сигурност",
+    "file": "16116.geojson",
+    "hash": "21d46b3ef85158c6f54dbe12a01642a6",
+    "source": "https://www.caa.bg/bg/category/745/16116"
+  },
+  {
+    "id": "16117",
+    "title": "Зона-О241",
+    "type": "Зони за сигурност",
+    "file": "16117.geojson",
+    "hash": "426768db530ca18f48e1450f478c59c8",
+    "source": "https://www.caa.bg/bg/category/745/16117"
+  },
+  {
+    "id": "16118",
+    "title": "Зона-О242",
+    "type": "Зони за сигурност",
+    "file": "16118.geojson",
+    "hash": "61ad3e621fad1c6e41877df2c28e981d",
+    "source": "https://www.caa.bg/bg/category/745/16118"
+  },
+  {
+    "id": "16119",
+    "title": "Зона-О243",
+    "type": "Зони за сигурност",
+    "file": "16119.geojson",
+    "hash": "8ddb28e0ade4a5b3fede644623e4d3df",
+    "source": "https://www.caa.bg/bg/category/745/16119"
+  },
+  {
+    "id": "16120",
+    "title": "Зона-О-244=D251",
+    "type": "Зони за сигурност",
+    "file": "16120.geojson",
+    "hash": "5ecf42ad120443bfb39ef9227f57d9c0",
+    "source": "https://www.caa.bg/bg/category/745/16120"
+  },
+  {
+    "id": "16121",
+    "title": "Зона-О245",
+    "type": "Зони за сигурност",
+    "file": "16121.geojson",
+    "hash": "8eb67713b0574af342aa6ed1699d8dbc",
+    "source": "https://www.caa.bg/bg/category/745/16121"
+  },
+  {
+    "id": "16122",
+    "title": "Зона-О246",
+    "type": "Зони за сигурност",
+    "file": "16122.geojson",
+    "hash": "48739dc6dbe2ed6b1c7aea50adf5ec26",
+    "source": "https://www.caa.bg/bg/category/745/16122"
+  },
+  {
+    "id": "16123",
+    "title": "Зона-О247",
+    "type": "Зони за сигурност",
+    "file": "16123.geojson",
+    "hash": "bb4aa1f67d5e7294e4848c19b9a2f180",
+    "source": "https://www.caa.bg/bg/category/745/16123"
+  },
+  {
+    "id": "16124",
+    "title": "Зона-О248",
+    "type": "Зони за сигурност",
+    "file": "16124.geojson",
+    "hash": "421768fe15000609ad147f76da2a9382",
+    "source": "https://www.caa.bg/bg/category/745/16124"
+  },
+  {
+    "id": "16125",
+    "title": "Зона-О249",
+    "type": "Зони за сигурност",
+    "file": "16125.geojson",
+    "hash": "f6c3923a988506446c0d507e098e9573",
+    "source": "https://www.caa.bg/bg/category/745/16125"
+  },
+  {
+    "id": "16126",
+    "title": "Зона-О250=D248",
+    "type": "Зони за сигурност",
+    "file": "16126.geojson",
+    "hash": "e2566df34d9d8f7820a0d88b49ff667d",
+    "source": "https://www.caa.bg/bg/category/745/16126"
+  },
+  {
+    "id": "16127",
+    "title": "Зона-О251",
+    "type": "Зони за сигурност",
+    "file": "16127.geojson",
+    "hash": "a3e567c7cdebd40df1cbe7c45814e91b",
+    "source": "https://www.caa.bg/bg/category/745/16127"
+  },
+  {
+    "id": "16128",
+    "title": "Зона-О252",
+    "type": "Зони за сигурност",
+    "file": "16128.geojson",
+    "hash": "fef3f90c2c1894f71d0ef235be5427c5",
+    "source": "https://www.caa.bg/bg/category/745/16128"
+  },
+  {
+    "id": "16129",
+    "title": "Зона-О253=D247",
+    "type": "Зони за сигурност",
+    "file": "16129.geojson",
+    "hash": "830eebea5dabd5a18ee30d0c2b6d6be7",
+    "source": "https://www.caa.bg/bg/category/745/16129"
+  },
+  {
+    "id": "16141",
+    "title": "Зона-О401",
+    "type": "Зони за сигурност",
+    "file": "16141.geojson",
+    "hash": "c64fd6ccd39b365dc1e40a9512a56d8d",
+    "source": "https://www.caa.bg/bg/category/745/16141"
+  },
+  {
+    "id": "16142",
+    "title": "Зона-О402",
+    "type": "Зони за сигурност",
+    "file": "16142.geojson",
+    "hash": "fbb37886fa9482f23fd8147132030779",
+    "source": "https://www.caa.bg/bg/category/745/16142"
+  },
+  {
+    "id": "16143",
+    "title": "Зона-О403",
+    "type": "Зони за сигурност",
+    "file": "16143.geojson",
+    "hash": "72e7e19ab272ba0ff60db02dfae7ceae",
+    "source": "https://www.caa.bg/bg/category/745/16143"
+  },
+  {
+    "id": "16144",
+    "title": "Зона-О404",
+    "type": "Зони за сигурност",
+    "file": "16144.geojson",
+    "hash": "2609bb3297962444cd48e6a718664b1e",
+    "source": "https://www.caa.bg/bg/category/745/16144"
+  },
+  {
+    "id": "16145",
+    "title": "Зона-О405",
+    "type": "Зони за сигурност",
+    "file": "16145.geojson",
+    "hash": "a62416f525dc5d7017f117e15f9c1e60",
+    "source": "https://www.caa.bg/bg/category/745/16145"
+  },
+  {
+    "id": "16146",
+    "title": "Зона-О406",
+    "type": "Зони за сигурност",
+    "file": "16146.geojson",
+    "hash": "a3d9bb7ac528baeaa238a3588ae6029c",
+    "source": "https://www.caa.bg/bg/category/745/16146"
+  },
+  {
+    "id": "16147",
+    "title": "Зона-О407",
+    "type": "Зони за сигурност",
+    "file": "16147.geojson",
+    "hash": "d88a62028e977c7dce98d10ee275230f",
+    "source": "https://www.caa.bg/bg/category/745/16147"
+  },
+  {
+    "id": "16148",
+    "title": "Зона-О408",
+    "type": "Зони за сигурност",
+    "file": "16148.geojson",
+    "hash": "4f8520ca3dacd7c4dd413cae023343d4",
+    "source": "https://www.caa.bg/bg/category/745/16148"
+  },
+  {
+    "id": "16149",
+    "title": "Зона-О409",
+    "type": "Зони за сигурност",
+    "file": "16149.geojson",
+    "hash": "7a4a225e74f460bb9eb8730d3ebc7a61",
+    "source": "https://www.caa.bg/bg/category/745/16149"
+  },
+  {
+    "id": "16150",
+    "title": "Зона-О410",
+    "type": "Зони за сигурност",
+    "file": "16150.geojson",
+    "hash": "d23002a1a935e6adc6bfb4af90592831",
+    "source": "https://www.caa.bg/bg/category/745/16150"
+  },
+  {
+    "id": "16151",
+    "title": "Зона-О411",
+    "type": "Зони за сигурност",
+    "file": "16151.geojson",
+    "hash": "92367728a2dd3b52661cf25c37246665",
+    "source": "https://www.caa.bg/bg/category/745/16151"
+  },
+  {
+    "id": "16152",
+    "title": "Зона-О412",
+    "type": "Зони за сигурност",
+    "file": "16152.geojson",
+    "hash": "5af8b649ec17ec542e17810886740192",
+    "source": "https://www.caa.bg/bg/category/745/16152"
+  },
+  {
+    "id": "16153",
+    "title": "Зона-О413",
+    "type": "Зони за сигурност",
+    "file": "16153.geojson",
+    "hash": "03777e9160c004288b75324f129f5793",
+    "source": "https://www.caa.bg/bg/category/745/16153"
+  },
+  {
+    "id": "16154",
+    "title": "Зона-О414",
+    "type": "Зони за сигурност",
+    "file": "16154.geojson",
+    "hash": "aa0891b0185b0f31fb215d813503f3ce",
+    "source": "https://www.caa.bg/bg/category/745/16154"
+  },
+  {
+    "id": "16155",
+    "title": "Зона-О415",
+    "type": "Зони за сигурност",
+    "file": "16155.geojson",
+    "hash": "ccf278bb1c05128d8af8a85a4154d3a6",
+    "source": "https://www.caa.bg/bg/category/745/16155"
+  },
+  {
+    "id": "16156",
+    "title": "Зона-О416",
+    "type": "Зони за сигурност",
+    "file": "16156.geojson",
+    "hash": "b66f58a4a5dfbb88bbaf7a574ede9383",
+    "source": "https://www.caa.bg/bg/category/745/16156"
+  },
+  {
+    "id": "16157",
+    "title": "Зона-О417",
+    "type": "Зони за сигурност",
+    "file": "16157.geojson",
+    "hash": "bdd0b547047134bbf503ea677246f84b",
+    "source": "https://www.caa.bg/bg/category/745/16157"
+  },
+  {
+    "id": "16158",
+    "title": "Зона-О418",
+    "type": "Зони за сигурност",
+    "file": "16158.geojson",
+    "hash": "477ba181eaba3d0b8096b0ee418b6a23",
+    "source": "https://www.caa.bg/bg/category/745/16158"
+  },
+  {
+    "id": "16159",
+    "title": "Зона-О419",
+    "type": "Зони за сигурност",
+    "file": "16159.geojson",
+    "hash": "ee11b40bd53c78a5d06ada0d962bc044",
+    "source": "https://www.caa.bg/bg/category/745/16159"
+  },
+  {
+    "id": "16160",
+    "title": "Зона-О420",
+    "type": "Зони за сигурност",
+    "file": "16160.geojson",
+    "hash": "a7b1edd86ff19a1f2f721620a75384df",
+    "source": "https://www.caa.bg/bg/category/745/16160"
+  },
+  {
+    "id": "16161",
+    "title": "Зона-О421",
+    "type": "Зони за сигурност",
+    "file": "16161.geojson",
+    "hash": "956bb5ed427ed1a5510aa859a67c8d36",
+    "source": "https://www.caa.bg/bg/category/745/16161"
+  },
+  {
+    "id": "16162",
+    "title": "Зона-О422",
+    "type": "Зони за сигурност",
+    "file": "16162.geojson",
+    "hash": "bc167e5ff0fd1ffa5c6df29bd616a311",
+    "source": "https://www.caa.bg/bg/category/745/16162"
+  },
+  {
+    "id": "16163",
+    "title": "Зона-О423",
+    "type": "Зони за сигурност",
+    "file": "16163.geojson",
+    "hash": "8ea55fada21b95c79589426c2886b2b8",
+    "source": "https://www.caa.bg/bg/category/745/16163"
+  },
+  {
+    "id": "16164",
+    "title": "Зона-О424",
+    "type": "Зони за сигурност",
+    "file": "16164.geojson",
+    "hash": "bb156ee6ce3ee9e63dfbbee4652aa983",
+    "source": "https://www.caa.bg/bg/category/745/16164"
+  },
+  {
+    "id": "16165",
+    "title": "Зона-О425",
+    "type": "Зони за сигурност",
+    "file": "16165.geojson",
+    "hash": "805e96103ca44bdcb5b205bbab431b13",
+    "source": "https://www.caa.bg/bg/category/745/16165"
+  },
+  {
+    "id": "16166",
+    "title": "Зона-О426",
+    "type": "Зони за сигурност",
+    "file": "16166.geojson",
+    "hash": "316100f0c65247d9f901601b702692a6",
+    "source": "https://www.caa.bg/bg/category/745/16166"
+  },
+  {
+    "id": "16167",
+    "title": "Зона-О427",
+    "type": "Зони за сигурност",
+    "file": "16167.geojson",
+    "hash": "9ac5251f642696dc02d6f03f74433383",
+    "source": "https://www.caa.bg/bg/category/745/16167"
+  },
+  {
+    "id": "16168",
+    "title": "Зона-О428",
+    "type": "Зони за сигурност",
+    "file": "16168.geojson",
+    "hash": "d0c991dac62d1a4dd963d015dfb7b0f0",
+    "source": "https://www.caa.bg/bg/category/745/16168"
+  },
+  {
+    "id": "16169",
+    "title": "Зона-О429",
+    "type": "Зони за сигурност",
+    "file": "16169.geojson",
+    "hash": "d732b57bd380602d283e9f4afb6cd4a1",
+    "source": "https://www.caa.bg/bg/category/745/16169"
+  },
+  {
+    "id": "16170",
+    "title": "Зона-О430",
+    "type": "Зони за сигурност",
+    "file": "16170.geojson",
+    "hash": "c4f5b96e322ad8bb5907fe277fc16bad",
+    "source": "https://www.caa.bg/bg/category/745/16170"
+  },
+  {
+    "id": "16171",
+    "title": "Зона-О431",
+    "type": "Зони за сигурност",
+    "file": "16171.geojson",
+    "hash": "956f20a44a8f39ef758c8ef5fc936ca0",
+    "source": "https://www.caa.bg/bg/category/745/16171"
+  },
+  {
+    "id": "16172",
+    "title": "Зона-О432",
+    "type": "Зони за сигурност",
+    "file": "16172.geojson",
+    "hash": "cda6184213ac101788f6d1df19cca91d",
+    "source": "https://www.caa.bg/bg/category/745/16172"
+  },
+  {
+    "id": "16173",
+    "title": "Зона-О433",
+    "type": "Зони за сигурност",
+    "file": "16173.geojson",
+    "hash": "2e86924734b1ff563a77b0e6a64b3cdc",
+    "source": "https://www.caa.bg/bg/category/745/16173"
+  },
+  {
+    "id": "16174",
+    "title": "Зона-О501",
+    "type": "Зони за сигурност",
+    "file": "16174.geojson",
+    "hash": "caddeed10833119efc58f79f54101adc",
+    "source": "https://www.caa.bg/bg/category/745/16174"
+  },
+  {
+    "id": "16175",
+    "title": "Зона-О502",
+    "type": "Зони за сигурност",
+    "file": "16175.geojson",
+    "hash": "5414200c1457d3af63598146ee3d4883",
+    "source": "https://www.caa.bg/bg/category/745/16175"
+  },
+  {
+    "id": "16176",
+    "title": "Зона-О503",
+    "type": "Зони за сигурност",
+    "file": "16176.geojson",
+    "hash": "0a7dd4c635dbf5b4db3bb425db9a3684",
+    "source": "https://www.caa.bg/bg/category/745/16176"
+  },
+  {
+    "id": "16177",
+    "title": "Зона-О3002",
+    "type": "Зони за сигурност",
+    "file": "16177.geojson",
+    "hash": "b415f06d1130c06b93af9fcb9bc0a12c",
+    "source": "https://www.caa.bg/bg/category/745/16177"
+  },
+  {
+    "id": "16178",
+    "title": "Зона-О4223",
+    "type": "Зони за сигурност",
+    "file": "16178.geojson",
+    "hash": "bd0be04f052dfa926dccf3d03e53b190",
+    "source": "https://www.caa.bg/bg/category/745/16178"
+  },
+  {
+    "id": "16183",
+    "title": "Зона ограничена около вертолетно летище Лозен (LNLN)",
+    "type": "Зони ограничени около летища",
+    "file": "16183.geojson",
+    "hash": "b0803bf3df0ae3688d2bb703c9bdadd4",
+    "source": "https://www.caa.bg/bg/category/745/16183"
+  },
+  {
+    "id": "16184",
+    "title": "Зона ограничена около вертолетно летище Марина Диневи",
+    "type": "Зони ограничени около летища",
+    "file": "16184.geojson",
+    "hash": "0df7ec73955bf376cae0cca5ae5e3452",
+    "source": "https://www.caa.bg/bg/category/745/16184"
+  },
+  {
+    "id": "16185",
+    "title": "Зона ограничена около вертолетно летище Милениум Център",
+    "type": "Зони ограничени около летища",
+    "file": "16185.geojson",
+    "hash": "309f4fee606d57356c8f151800541eb3",
+    "source": "https://www.caa.bg/bg/category/745/16185"
+  },
+  {
+    "id": "16186",
+    "title": "Зона ограничена около вертолетно летище Света Марина",
+    "type": "Зони ограничени около летища",
+    "file": "16186.geojson",
+    "hash": "4c7a5e6aaba67456d2f75648b83e825b",
+    "source": "https://www.caa.bg/bg/category/745/16186"
+  },
+  {
+    "id": "16187",
+    "title": "Зона ограничена около летище Алфа Метал (LBAM)",
+    "type": "Зони ограничени около летища",
+    "file": "16187.geojson",
+    "hash": "c002202d8dbbe037e9dada90cc8a17ef",
+    "source": "https://www.caa.bg/bg/category/745/16187"
+  },
+  {
+    "id": "16188",
+    "title": "Зона ограничена около летище Балчик",
+    "type": "Зони ограничени около летища",
+    "file": "16188.geojson",
+    "hash": "db36a0b38ff9056cfcd4615a3211f9db",
+    "source": "https://www.caa.bg/bg/category/745/16188"
+  },
+  {
+    "id": "16189",
+    "title": "Зона ограничена около летище Баховица",
+    "type": "Зони ограничени около летища",
+    "file": "16189.geojson",
+    "hash": "0e86aa9ad3ba6a9f398fa43598f9c4ab",
+    "source": "https://www.caa.bg/bg/category/745/16189"
+  },
+  {
+    "id": "16190",
+    "title": "Зона ограничена около летище Белчин",
+    "type": "Зони ограничени около летища",
+    "file": "16190.geojson",
+    "hash": "b69df17020cc811326ec9a1d24cbf65b",
+    "source": "https://www.caa.bg/bg/category/745/16190"
+  },
+  {
+    "id": "16191",
+    "title": "Зона ограничена около летище Благоево",
+    "type": "Зони ограничени около летища",
+    "file": "16191.geojson",
+    "hash": "67602b0f7e0f5a45d91ecc494a08bff1",
+    "source": "https://www.caa.bg/bg/category/745/16191"
+  },
+  {
+    "id": "16192",
+    "title": "Зона ограничена около летище Бохот",
+    "type": "Зони ограничени около летища",
+    "file": "16192.geojson",
+    "hash": "5bc7222e7c3021010e18a0c83eaf7cd2",
+    "source": "https://www.caa.bg/bg/category/745/16192"
+  },
+  {
+    "id": "16193",
+    "title": "Зона ограничена около летище Брезник",
+    "type": "Зони ограничени около летища",
+    "file": "16193.geojson",
+    "hash": "6cf335eb16e6e1874bfc5c3954d51de3",
+    "source": "https://www.caa.bg/bg/category/745/16193"
+  },
+  {
+    "id": "16194",
+    "title": "Зона ограничена около летище Бургас",
+    "type": "Зони ограничени около летища",
+    "file": "16194.geojson",
+    "hash": "2c1bec917d9ef1c6a92486fb469a795c",
+    "source": "https://www.caa.bg/bg/category/745/16194"
+  },
+  {
+    "id": "16195",
+    "title": "Зона ограничена около летище Бъзън",
+    "type": "Зони ограничени около летища",
+    "file": "16195.geojson",
+    "hash": "54558e18ab60217c4f4e3db2421cb45b",
+    "source": "https://www.caa.bg/bg/category/745/16195"
+  },
+  {
+    "id": "16196",
+    "title": "Зона ограничена около летище Бяла",
+    "type": "Зони ограничени около летища",
+    "file": "16196.geojson",
+    "hash": "1007e23a48cf3d52da559cb6833837cc",
+    "source": "https://www.caa.bg/bg/category/745/16196"
+  },
+  {
+    "id": "16197",
+    "title": "Зона ограничена около летище Варна",
+    "type": "Зони ограничени около летища",
+    "file": "16197.geojson",
+    "hash": "85403e357907e0d1ef1d4773c2027446",
+    "source": "https://www.caa.bg/bg/category/745/16197"
+  },
+  {
+    "id": "16198",
+    "title": "Зона ограничена около летище Враца",
+    "type": "Зони ограничени около летища",
+    "file": "16198.geojson",
+    "hash": "ea24ed1502af66cf9598d834cccbd394",
+    "source": "https://www.caa.bg/bg/category/745/16198"
+  },
+  {
+    "id": "16199",
+    "title": "Зона ограничена около летище Горна Оряховица",
+    "type": "Зони ограничени около летища",
+    "file": "16199.geojson",
+    "hash": "99651bd68c406187482628e32717de0a",
+    "source": "https://www.caa.bg/bg/category/745/16199"
+  },
+  {
+    "id": "16200",
+    "title": "Зона ограничена около летище Горски извор",
+    "type": "Зони ограничени около летища",
+    "file": "16200.geojson",
+    "hash": "ad32d0d1ad63775173ee0e16b3bc0a6e",
+    "source": "https://www.caa.bg/bg/category/745/16200"
+  },
+  {
+    "id": "16201",
+    "title": "Зона ограничена около летище Градище",
+    "type": "Зони ограничени около летища",
+    "file": "16201.geojson",
+    "hash": "e635ff9b8829ad954d736fcfbe31de7f",
+    "source": "https://www.caa.bg/bg/category/745/16201"
+  },
+  {
+    "id": "16202",
+    "title": "Зона ограничена около летище Гривица",
+    "type": "Зони ограничени около летища",
+    "file": "16202.geojson",
+    "hash": "9470b25eb95144648f9c4d8a6fa22862",
+    "source": "https://www.caa.bg/bg/category/745/16202"
+  },
+  {
+    "id": "16203",
+    "title": "Зона ограничена около летище Даскал Атанасово",
+    "type": "Зони ограничени около летища",
+    "file": "16203.geojson",
+    "hash": "b7131a5a6a1cd20f3a22a3b67488fee6",
+    "source": "https://www.caa.bg/bg/category/745/16203"
+  },
+  {
+    "id": "16204",
+    "title": "Зона ограничена около летище Две могили",
+    "type": "Зони ограничени около летища",
+    "file": "16204.geojson",
+    "hash": "ea7fce8f2eab0885e7ae48ba15ead281",
+    "source": "https://www.caa.bg/bg/category/745/16204"
+  },
+  {
+    "id": "16205",
+    "title": "Зона ограничена около летище Долна баня",
+    "type": "Зони ограничени около летища",
+    "file": "16205.geojson",
+    "hash": "e3d8616002c2f9f7f4d185c2231cc7d8",
+    "source": "https://www.caa.bg/bg/category/745/16205"
+  },
+  {
+    "id": "16206",
+    "title": "Зона ограничена около летище Долна Митрополия",
+    "type": "Зони ограничени около летища",
+    "file": "16206.geojson",
+    "hash": "c05ecb6cfe815968d05ccb84f0821d9f",
+    "source": "https://www.caa.bg/bg/category/745/16206"
+  },
+  {
+    "id": "16207",
+    "title": "Зона ограничена около летище Драгановци",
+    "type": "Зони ограничени около летища",
+    "file": "16207.geojson",
+    "hash": "ec1b2270f08f47f4f925b1379cff4042",
+    "source": "https://www.caa.bg/bg/category/745/16207"
+  },
+  {
+    "id": "16208",
+    "title": "Зона ограничена около летище Ерден",
+    "type": "Зони ограничени около летища",
+    "file": "16208.geojson",
+    "hash": "9acc6e969222fa2a7f24df4fefa0d671",
+    "source": "https://www.caa.bg/bg/category/745/16208"
+  },
+  {
+    "id": "16209",
+    "title": "Зона ограничена около летище Ихтиман",
+    "type": "Зони ограничени около летища",
+    "file": "16209.geojson",
+    "hash": "225a4f78e3d6028c9c8bfa6f109433e7",
+    "source": "https://www.caa.bg/bg/category/745/16209"
+  },
+  {
+    "id": "16210",
+    "title": "Зона ограничена около летище Казанлък",
+    "type": "Зони ограничени около летища",
+    "file": "16210.geojson",
+    "hash": "d86988412a82302c36cf110ce20c1f5d",
+    "source": "https://www.caa.bg/bg/category/745/16210"
+  },
+  {
+    "id": "16211",
+    "title": "Зона ограничена около летище Кайнарджа",
+    "type": "Зони ограничени около летища",
+    "file": "16211.geojson",
+    "hash": "6e68a6a32ba227b094b165cce573c78a",
+    "source": "https://www.caa.bg/bg/category/745/16211"
+  },
+  {
+    "id": "16212",
+    "title": "Зона ограничена около летище Лесново",
+    "type": "Зони ограничени около летища",
+    "file": "16212.geojson",
+    "hash": "f27f9ae6cf6329d5152c9d1542885927",
+    "source": "https://www.caa.bg/bg/category/745/16212"
+  },
+  {
+    "id": "16213",
+    "title": "Зона ограничена около летище Малево",
+    "type": "Зони ограничени около летища",
+    "file": "16213.geojson",
+    "hash": "f60b6367a5e3d2538445f87a20b034ea",
+    "source": "https://www.caa.bg/bg/category/745/16213"
+  },
+  {
+    "id": "16214",
+    "title": "Зона ограничена около летище Маноле",
+    "type": "Зони ограничени около летища",
+    "file": "16214.geojson",
+    "hash": "28da6cb971e34849fdfd231de3623e39",
+    "source": "https://www.caa.bg/bg/category/745/16214"
+  },
+  {
+    "id": "16215",
+    "title": "Зона ограничена около летище Марица",
+    "type": "Зони ограничени около летища",
+    "file": "16215.geojson",
+    "hash": "ffa208ba4402c58a22eeef6e6747595c",
+    "source": "https://www.caa.bg/bg/category/745/16215"
+  },
+  {
+    "id": "16216",
+    "title": "Зона ограничена около летище Монтана",
+    "type": "Зони ограничени около летища",
+    "file": "16216.geojson",
+    "hash": "3e654ae0fa9fd97f7e27f0eb4b672a29",
+    "source": "https://www.caa.bg/bg/category/745/16216"
+  },
+  {
+    "id": "16217",
+    "title": "Зона ограничена около летище Пловдив",
+    "type": "Зони ограничени около летища",
+    "file": "16217.geojson",
+    "hash": "ee8023116c6616f341d24cb266c2aedc",
+    "source": "https://www.caa.bg/bg/category/745/16217"
+  },
+  {
+    "id": "16218",
+    "title": "Зона ограничена около летище Приморско",
+    "type": "Зони ограничени около летища",
+    "file": "16218.geojson",
+    "hash": "7c02f011e86b9e4ce0fcda62d3d627fa",
+    "source": "https://www.caa.bg/bg/category/745/16218"
+  },
+  {
+    "id": "16219",
+    "title": "Зона ограничена около летище Русе",
+    "type": "Зони ограничени около летища",
+    "file": "16219.geojson",
+    "hash": "a023c5718282e9a68c83bef9f8652861",
+    "source": "https://www.caa.bg/bg/category/745/16219"
+  },
+  {
+    "id": "16220",
+    "title": "Зона ограничена около летище Сливница",
+    "type": "Зони ограничени около летища",
+    "file": "16220.geojson",
+    "hash": "956dc249ef0a4d9c08bd715e2ec54dac",
+    "source": "https://www.caa.bg/bg/category/745/16220"
+  },
+  {
+    "id": "16221",
+    "title": "Зона ограничена около летище Слънчев бряг",
+    "type": "Зони ограничени около летища",
+    "file": "16221.geojson",
+    "hash": "6a3c462c1e9e4d8d1d461f26a61fe668",
+    "source": "https://www.caa.bg/bg/category/745/16221"
+  },
+  {
+    "id": "16222",
+    "title": "Зона ограничена около летище „Васил Левски“ – София запад",
+    "type": "Зони ограничени около летища",
+    "file": "16222.geojson",
+    "hash": "5dd2a25c8f5f0774bf84d3d35981a752",
+    "source": "https://www.caa.bg/bg/category/745/16222"
+  },
+  {
+    "id": "16223",
+    "title": "Зона ограничена около летище „Васил Левски“ – София",
+    "type": "Зони ограничени около летища",
+    "file": "16223.geojson",
+    "hash": "be6ae1e6bf3bc0b39dff6919eab2b4a2",
+    "source": "https://www.caa.bg/bg/category/745/16223"
+  },
+  {
+    "id": "16224",
+    "title": "Зона ограничена около летище Старо селище",
+    "type": "Зони ограничени около летища",
+    "file": "16224.geojson",
+    "hash": "21b3032b2040347b7479b24a34a7dceb",
+    "source": "https://www.caa.bg/bg/category/745/16224"
+  },
+  {
+    "id": "16225",
+    "title": "Зона ограничена около летище Студен кладенец",
+    "type": "Зони ограничени около летища",
+    "file": "16225.geojson",
+    "hash": "93d2e8d07aa6417a214eb8e51020242c",
+    "source": "https://www.caa.bg/bg/category/745/16225"
+  },
+  {
+    "id": "16226",
+    "title": "Зона ограничена около летище Цалапица",
+    "type": "Зони ограничени около летища",
+    "file": "16226.geojson",
+    "hash": "6c1a48827783715549f906f269722014",
+    "source": "https://www.caa.bg/bg/category/745/16226"
+  },
+  {
+    "id": "16233",
+    "title": "Зона Б001",
+    "type": "Зони за сигурност",
+    "file": "16233.geojson",
+    "hash": "06ab4e3afea7bbcc10cf7b8d610e46d1",
+    "source": "https://www.caa.bg/bg/category/745/16233"
+  },
+  {
+    "id": "16347",
+    "title": "Зона Б002",
+    "type": "Зони за сигурност",
+    "file": "16347.geojson",
+    "hash": "359960f818a8fa934cc3d0068f08bdce",
+    "source": "https://www.caa.bg/bg/category/745/16347"
+  },
+  {
+    "id": "16348",
+    "title": "Зона Б003",
+    "type": "Зони за сигурност",
+    "file": "16348.geojson",
+    "hash": "4f11f24cf74c123160ac15586728d946",
+    "source": "https://www.caa.bg/bg/category/745/16348"
+  },
+  {
+    "id": "16349",
+    "title": "Зона Б004",
+    "type": "Зони за сигурност",
+    "file": "16349.geojson",
+    "hash": "597daf20c2c4110fa096639c832e42b9",
+    "source": "https://www.caa.bg/bg/category/745/16349"
+  },
+  {
+    "id": "16350",
+    "title": "Зона Б005",
+    "type": "Зони за сигурност",
+    "file": "16350.geojson",
+    "hash": "59d28d45528a6af8e3dc11d69a4d686d",
+    "source": "https://www.caa.bg/bg/category/745/16350"
+  },
+  {
+    "id": "16351",
+    "title": "Зона Б006",
+    "type": "Зони за сигурност",
+    "file": "16351.geojson",
+    "hash": "bbd46df47a6344fc34c46827b882bc26",
+    "source": "https://www.caa.bg/bg/category/745/16351"
+  },
+  {
+    "id": "16352",
+    "title": "Зона О3001",
+    "type": "Зони за сигурност",
+    "file": "16352.geojson",
+    "hash": "380239325f01ac6634e917c16088dbe9",
+    "source": "https://www.caa.bg/bg/category/745/16352"
+  },
+  {
+    "id": "16353",
+    "title": "Зона О3002",
+    "type": "Зони за сигурност",
+    "file": "16353.geojson",
+    "hash": "8c699a5828d0d1c45f35f32172dbac8d",
+    "source": "https://www.caa.bg/bg/category/745/16353"
+  },
+  {
+    "id": "16354",
+    "title": "Зона О3005",
+    "type": "Зони за сигурност",
+    "file": "16354.geojson",
+    "hash": "67c327800ff0bb0dacaa605acceb269f",
+    "source": "https://www.caa.bg/bg/category/745/16354"
+  },
+  {
+    "id": "16355",
+    "title": "Зона О3003",
+    "type": "Зони за сигурност",
+    "file": "16355.geojson",
+    "hash": "fff852a136eab67a2249630aed1a4a96",
+    "source": "https://www.caa.bg/bg/category/745/16355"
+  },
+  {
+    "id": "16356",
+    "title": "Зона О3006",
+    "type": "Зони за сигурност",
+    "file": "16356.geojson",
+    "hash": "f741cc9579934efda34ecb7f21706272",
+    "source": "https://www.caa.bg/bg/category/745/16356"
+  },
+  {
+    "id": "16357",
+    "title": "Зона О3007",
+    "type": "Зони за сигурност",
+    "file": "16357.geojson",
+    "hash": "09837c2506f7f07b780e415ff5fe1031",
+    "source": "https://www.caa.bg/bg/category/745/16357"
+  },
+  {
+    "id": "16358",
+    "title": "Зона О3010",
+    "type": "Зони за сигурност",
+    "file": "16358.geojson",
+    "hash": "874476172c6d920ee4f9e4151093e10b",
+    "source": "https://www.caa.bg/bg/category/745/16358"
+  },
+  {
+    "id": "16359",
+    "title": "Зона О3008",
+    "type": "Зони за сигурност",
+    "file": "16359.geojson",
+    "hash": "3a979227a4f0e9c5df8a26f2d178756f",
+    "source": "https://www.caa.bg/bg/category/745/16359"
+  },
+  {
+    "id": "16360",
+    "title": "Зона О3009",
+    "type": "Зони за сигурност",
+    "file": "16360.geojson",
+    "hash": "f9f461c20a19f8c83fa1b4b078dfcf2a",
+    "source": "https://www.caa.bg/bg/category/745/16360"
+  },
+  {
+    "id": "16366",
+    "title": "Зона О3011",
+    "type": "Зони за сигурност",
+    "file": "16366.geojson",
+    "hash": "42422603b1ae4f512dcc76db9e249125",
+    "source": "https://www.caa.bg/bg/category/745/16366"
+  },
+  {
+    "id": "16370",
+    "title": "Зона О3012",
+    "type": "Зони за сигурност",
+    "file": "16370.geojson",
+    "hash": "5481d40cb9a2faa778b85552d0ccc09a",
+    "source": "https://www.caa.bg/bg/category/745/16370"
+  },
+  {
+    "id": "16374",
+    "title": "Зона О3013",
+    "type": "Зони за сигурност",
+    "file": "16374.geojson",
+    "hash": "2f985a918b57bd2f63490f7ffc2d3608",
+    "source": "https://www.caa.bg/bg/category/745/16374"
+  },
+  {
+    "id": "16377",
+    "title": "Зона О3014",
+    "type": "Зони за сигурност",
+    "file": "16377.geojson",
+    "hash": "32664dc333617351e4d99ff93e78425f",
+    "source": "https://www.caa.bg/bg/category/745/16377"
+  },
+  {
+    "id": "16381",
+    "title": "Зона О3015",
+    "type": "Зони за сигурност",
+    "file": "16381.geojson",
+    "hash": "54790ba91d98f5db55ea9798ad74f0cb",
+    "source": "https://www.caa.bg/bg/category/745/16381"
+  },
+  {
+    "id": "16382",
+    "title": "Зона О3018",
+    "type": "Зони за сигурност",
+    "file": "16382.geojson",
+    "hash": "96e565be4192c50f8b399bc94e8bd1df",
+    "source": "https://www.caa.bg/bg/category/745/16382"
+  },
+  {
+    "id": "16383",
+    "title": "Зона О3019",
+    "type": "Зони за сигурност",
+    "file": "16383.geojson",
+    "hash": "b59581049bd77c63b4dcbde7d2907c18",
+    "source": "https://www.caa.bg/bg/category/745/16383"
+  },
+  {
+    "id": "16384",
+    "title": "Зона О3020",
+    "type": "Зони за сигурност",
+    "file": "16384.geojson",
+    "hash": "07a862cc8d925a1eae2cee5a9a278903",
+    "source": "https://www.caa.bg/bg/category/745/16384"
+  },
+  {
+    "id": "16489",
+    "title": "Зона Н001",
+    "type": "Зони за сигурност",
+    "file": "16489.geojson",
+    "hash": "2d0d3d0b34e7141079b95a01cd32e626",
+    "source": "https://www.caa.bg/bg/category/745/16489"
+  },
+  {
+    "id": "16490",
+    "title": "Зона Н002",
+    "type": "Зони за сигурност",
+    "file": "16490.geojson",
+    "hash": "dbf871619c363133f41c3497506beda9",
+    "source": "https://www.caa.bg/bg/category/745/16490"
+  },
+  {
+    "id": "16491",
+    "title": "Зона Н003",
+    "type": "Зони за сигурност",
+    "file": "16491.geojson",
+    "hash": "a218e31d5f0a5fd2e3e0766aa8d55a3b",
+    "source": "https://www.caa.bg/bg/category/745/16491"
+  },
+  {
+    "id": "16492",
+    "title": "Зона Н004",
+    "type": "Зони за сигурност",
+    "file": "16492.geojson",
+    "hash": "a2fb6d76bdfb0f85e2285c075b92b524",
+    "source": "https://www.caa.bg/bg/category/745/16492"
+  },
+  {
+    "id": "16493",
+    "title": "Зона Н005",
+    "type": "Зони за сигурност",
+    "file": "16493.geojson",
+    "hash": "d3c45260b2b797ccb552268811754e87",
+    "source": "https://www.caa.bg/bg/category/745/16493"
+  },
+  {
+    "id": "16494",
+    "title": "Зона Н006",
+    "type": "Зони за сигурност",
+    "file": "16494.geojson",
+    "hash": "ccec0c7d031eee72b0d43769af463f18",
+    "source": "https://www.caa.bg/bg/category/745/16494"
+  },
+  {
+    "id": "16500",
+    "title": "Зона Язовир Искър",
+    "type": "Зони за околна среда",
+    "file": "16500.geojson",
+    "hash": "f7d5e1dd4cfc94dc910d8c2d195cac7d",
+    "source": "https://www.caa.bg/bg/category/745/16500"
+  },
+  {
+    "id": "18888",
+    "title": "Зона-2021-09-06",
+    "type": "",
+    "file": null,
+    "hash": "",
+    "source": "https://www.caa.bg/bg/category/745/18888",
+    "empty": true
+  }
+]

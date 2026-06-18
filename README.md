@@ -77,7 +77,7 @@ A GitHub Actions workflow keeps the site current with no manual steps:
 - On the schedule/manual runs it runs `bin/fetch-airzones.mjs`, commits the refreshed `airzones/` back **only
   if something changed**, then deploys. Plain pushes skip the fetch (so caa.bg isn't hit) and just redeploy.
 - Deploys via the official Pages pipeline (`upload-pages-artifact` + `deploy-pages`), publishing a curated
-  `_site/` (the viewer + `airzones/all.geojson` + the legacy offline artifacts).
+  `_site/` (just the viewer `index.html` + `airzones/all.geojson`; the live ED-269 data comes from the Worker).
 
 **Prerequisite:** Pages **Source = GitHub Actions** (step 3 above). Note: GitHub pauses scheduled workflows
 after ~60 days with no repo activity — the bot's commits or any manual push/dispatch keep it alive.

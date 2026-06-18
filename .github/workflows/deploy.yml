@@ -47,14 +47,12 @@ jobs:
             git push
           fi
 
-      # Stage only what the live site serves (keeps .git/bin/worker out of the published artifact).
+      # Stage only what the live site serves (keeps .git/bin/worker/snapshots out of the published artifact).
       - name: Stage site
         run: |
           mkdir -p _site/airzones
           cp index.html _site/
           cp airzones/all.geojson _site/airzones/
-          # preserve the existing public offline artifacts (their URLs may be bookmarked)
-          cp bgr_zones_16062026.html bgr_zones_16062026.geojson bgr_zones_16062026.json _site/ 2>/dev/null || true
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

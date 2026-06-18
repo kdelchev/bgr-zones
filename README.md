@@ -93,6 +93,8 @@ A GitHub Actions workflow keeps the site current with no manual steps:
 
 Turns a locally-downloaded ED-269 file into a standalone `.html` map + a `.geojson` export (for
 geojson.io / QGIS). Circles in the GeoJSON are approximated as 64-point polygons (GeoJSON has no circle type).
+Outputs are named after the input basename.
 ```sh
-node build_zone_map.mjs [input.json]   # defaults to bgr_zones_16062026.json
+unzip ed269/latest.zip          # or any ED-269 .json from caa.bg
+node build_zone_map.mjs <input.json>
 ```

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Build an interactive map + GeoJSON export from an ED-269 UAS Geographical Zone file.
 //
-//   node build_zone_map.mjs [input.json]   (defaults to bgr_zones_16062026.json)
+//   node build_zone_map.mjs <input.json>   (an ED-269 JSON, e.g. `unzip ed269/latest.zip`)
 //
 // Outputs (named after the input basename):
 //   <name>.html     interactive Leaflet map  (true circles, color-coded, click-for-detail)
@@ -12,7 +12,11 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { basename, extname } from "node:path";
 
-const inputPath = process.argv[2] ?? "bgr_zones_16062026.json";
+const inputPath = process.argv[2];
+if (!inputPath) {
+  console.error("Usage: node build_zone_map.mjs <input.json>  (an ED-269 JSON, e.g. `unzip ed269/latest.zip`)");
+  process.exit(1);
+}
 const stem = basename(inputPath, extname(inputPath));
 const htmlPath = `${stem}.html`;
 const geojsonPath = `${stem}.geojson`;

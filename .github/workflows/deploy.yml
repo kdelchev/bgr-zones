@@ -29,17 +29,19 @@ jobs:
 
       # Refresh CAA airzones only on schedule/manual runs (not on every push → don't hammer caa.bg).
       # continue-on-error: a caa.bg hiccup must never block deploying the last-good data.
-      - name: Refresh CAA airzones
+      - name: Refresh CAA data (ED-269 + airzones)
         if: github.event_name != 'push'
         continue-on-error: true
-        run: node bin/fetch-airzones.mjs
+        run: |
+          node bin/fetch-ed269.mjs
+          node bin/fetch-airzones.mjs
 
       - name: Commit refreshed data if changed
         if: github.event_name != 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add airzones
+          git add airzones ed269
           if git diff --cached --quiet; then
             echo "No airzones changes."
           else
@@ -50,9 +52,10 @@ jobs:
       # Stage only what the live site serves (keeps .git/bin/worker/snapshots out of the published artifact).
       - name: Stage site
         run: |
-          mkdir -p _site/airzones
+          mkdir -p _site/airzones _site/ed269
           cp index.html _site/
           cp airzones/all.geojson _site/airzones/
+          cp ed269/latest.zip _site/ed269/
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

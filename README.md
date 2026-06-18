@@ -7,28 +7,22 @@ Visualizes Bulgarian CAA drone geographical zones (the **ED-269** standard) on a
 - **Units:** meters (`uomDimensions: "M"`) — `radius` and the `lower/upperLimit` altitude band are in meters
   (e.g. `upperLimit: 120` = 120 m AGL).
 
-## Live viewer — `index.html` + Cloudflare Worker
+## Live viewer — `index.html` (static data, no server)
 
-caa.bg sends **no CORS headers** and has **no stable "latest" URL**, so a browser page cannot fetch the file
-directly. A tiny Cloudflare Worker (`worker.js`) runs server-side: it scrapes the listing for the newest
-`bgr_zones_DDMMYYYY.zip`, fetches it, and re-serves the bytes with CORS. The static page (`index.html`)
-then fetches the Worker, unzips it in the browser (fflate), and renders with Leaflet.
+Both datasets are committed as **static files** and refreshed weekly by GitHub Actions (see below), so the
+page needs no backend. On load it fetches `ed269/latest.zip` (same-origin), unzips it in the browser
+(fflate), and renders with Leaflet. caa.bg has no CORS and no stable "latest" URL, so the *fetching* happens
+server-side in the Action (`bin/fetch-ed269.mjs`), not in the browser.
 
-### 1. Deploy the Worker
-```sh
-npx wrangler login      # once
-npx wrangler deploy     # → https://bgr-zones.<your-subdomain>.workers.dev
-```
+### Use it as an ED-269 viewer
+Drag-and-drop or **Open file…** a custom ED-269 `.zip`/`.json` to render any ED-269 dataset — fully
+client-side.
 
-### 2. Point the page at it
-Edit `DEFAULT_WORKER_URL` near the top of the `<script>` in `index.html`, or test without editing via the
-query param: `index.html?worker=https://bgr-zones.<you>.workers.dev`.
-
-### 3. Publish the page (GitHub Pages via Actions)
+### Publish the page (GitHub Pages via Actions)
 Set **Settings → Pages → Build and deployment → Source = GitHub Actions** (once). Deployment is then handled
 by `.github/workflows/deploy.yml` (see below) — every push to `main`, the weekly schedule, and manual runs
 publish the site. Opening the Pages URL auto-loads and renders the latest zones; **Reload latest** re-fetches
-the ED-269 data live.
+the static ED-269 file.
 
 ### Features
 - Circles drawn as **true circles** (native radius); polygons drawn directly. Canvas renderer
@@ -38,7 +32,7 @@ the ED-269 data live.
 - Click-for-metadata popups; clicking an overlap lists **every** zone under the cursor (across both layers).
 - Auto-fixes a known lat/lon **transposition** (zone `0000502`) and flags an out-of-region **outlier**
   (zone `0001133`) without moving it.
-- **Manual fallback:** if the Worker is unreachable, drag/drop or open a `.zip`/`.json` downloaded from
+- **Custom files:** drag/drop or open any ED-269 `.zip`/`.json` downloaded from
   caa.bg — works fully client-side (only map tiles need internet).
 
 ### Color scheme (two orthogonal axes)
@@ -50,6 +44,18 @@ independent classifications, so each source has its own palette:
 | 🔴 PROHIBITED `#d7191c` | 🟣 Security `#7c3aed` |
 | 🟠 REQ_AUTHORISATION `#fdae61` | 🔵 Airport — restricted `#2563eb` |
 | 🟡 CONDITIONAL `#f7e043` | 🟦 Airport — safety `#0891b2` · 🟢 Coordination `#15803d` · 🌸 Environmental `#be185d` |
+
+## ED-269 data — `bin/fetch-ed269.mjs` + `ed269/`
+
+`bin/fetch-ed269.mjs` downloads the newest ED-269 ZIP and stores it as `ed269/latest.zip` (the file the
+viewer loads). **Fetch-only** (no git), zero-dependency:
+```sh
+node bin/fetch-ed269.mjs
+```
+- Resolves the newest `bgr_zones_DDMMYYYY.zip` from the CAA listing and saves it verbatim (the browser
+  unzips it — no server, no conversion, so circles stay true circles).
+- **Idempotent by dated filename:** `ed269/manifest.json` records the current source file; if the latest is
+  unchanged it skips the download (no git churn).
 
 ## Second layer — CAA "airzones" (`bin/fetch-airzones.mjs` + `airzones/`)
 
@@ -67,20 +73,21 @@ node bin/fetch-airzones.mjs
 - **Idempotent:** stores an md5 per zone in `airzones/manifest.json`; unchanged zones are left untouched
   (and stale ones removed), so re-runs produce no diff.
 - Writes per-zone `airzones/{id}.geojson`, the `manifest.json`, and a combined **`airzones/all.geojson`**
-  (the single file the viewer loads, same-origin via Pages — no Worker/CORS needed for this layer).
+  (the single file the viewer loads, same-origin via Pages — no CORS dance needed).
 
 Run it before committing when you want fresh airzone data.
 
 ### Automated weekly refresh + deploy (`.github/workflows/deploy.yml`)
 A GitHub Actions workflow keeps the site current with no manual steps:
 - **Triggers:** weekly cron (`Mon 06:00 UTC`), manual (**Actions → Run workflow**), and every push to `main`.
-- On the schedule/manual runs it runs `bin/fetch-airzones.mjs`, commits the refreshed `airzones/` back **only
-  if something changed**, then deploys. Plain pushes skip the fetch (so caa.bg isn't hit) and just redeploy.
+- On the schedule/manual runs it runs `bin/fetch-ed269.mjs` + `bin/fetch-airzones.mjs`, commits the refreshed
+  `ed269/` + `airzones/` back **only if something changed**, then deploys. Plain pushes skip the fetch (so
+  caa.bg isn't hit) and just redeploy.
 - Deploys via the official Pages pipeline (`upload-pages-artifact` + `deploy-pages`), publishing a curated
-  `_site/` (just the viewer `index.html` + `airzones/all.geojson`; the live ED-269 data comes from the Worker).
+  `_site/` (`index.html` + `airzones/all.geojson` + `ed269/latest.zip`).
 
-**Prerequisite:** Pages **Source = GitHub Actions** (step 3 above). Note: GitHub pauses scheduled workflows
-after ~60 days with no repo activity — the bot's commits or any manual push/dispatch keep it alive.
+**Prerequisite:** Pages **Source = GitHub Actions** (above). Note: GitHub pauses scheduled workflows after
+~60 days with no repo activity — the bot's commits or any manual push/dispatch keep it alive.
 
 ## Offline / static generator — `build_zone_map.mjs`
 

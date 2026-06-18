@@ -52,9 +52,8 @@
 <script>
 "use strict";
 
-// --- Config: deployed Cloudflare Worker URL. Override per-load with ?worker=https://... ---
-const DEFAULT_WORKER_URL = "https://bgr-zones.kdelchev.workers.dev/"; // e.g. "https://bgr-zones.<your-subdomain>.workers.dev"
-const WORKER_URL = new URLSearchParams(location.search).get("worker") || DEFAULT_WORKER_URL;
+// --- Static data sources (same-origin, built weekly by bin/fetch-*.mjs). Drop a custom file to override. ---
+const ED269_URL = "ed269/latest.zip"; // latest ED-269 drone zones (zip; unzipped in-browser)
 
 // --- ED-269 restriction → color (warm severity ramp) ---
 const COLORS = { PROHIBITED: "#d7191c", REQ_AUTHORISATION: "#fdae61", CONDITIONAL: "#f7e043" };
@@ -363,7 +362,7 @@ function rebuildControl() {
   controlEl.addTo(map);
 }
 
-// Load + render the CAA airzones layer (independent of the ED-269 worker load). On by default.
+// Load + render the CAA airzones layer (independent of the ED-269 load). On by default.
 async function loadAirzones() {
   try {
     const res = await fetch(AIRZONES_URL, { cache: "no-store" });
@@ -406,10 +405,10 @@ function jsonFromZip(buf) {
   return JSON.parse(new TextDecoder("utf-8").decode(files[name]));
 }
 
-async function loadFromWorker() {
-  setStatus("Loading latest from CAA…");
-  const res = await fetch(WORKER_URL, { cache: "no-store" });
-  if (!res.ok) throw new Error(`proxy ${res.status}: ${(await res.text()).slice(0, 160)}`);
+async function loadEd269() {
+  setStatus("Loading ED-269 zones…");
+  const res = await fetch(ED269_URL, { cache: "no-store" });
+  if (!res.ok) throw new Error(`ED-269 fetch ${res.status}`);
   render(jsonFromZip(await res.arrayBuffer()));
 }
 
@@ -424,8 +423,7 @@ async function loadFromFile(file) {
 
 // --- Wire up UI ---
 document.getElementById("reload").addEventListener("click", () => {
-  if (!WORKER_URL) { setStatus("No Worker URL configured — open a file instead.", true); return; }
-  loadFromWorker().catch((e) => setStatus(`Reload failed: ${e.message}`, true));
+  loadEd269().catch((e) => setStatus(`Reload failed: ${e.message}`, true));
 });
 document.getElementById("file").addEventListener("change", (e) => {
   const f = e.target.files[0];
@@ -444,12 +442,8 @@ window.addEventListener("drop", (e) => {
 });
 
 // --- Initial load ---
-if (WORKER_URL) {
-  loadFromWorker().catch((e) =>
-    setStatus(`Auto-load failed (${e.message}). Drop a .zip/.json or click "Open file…".`, true));
-} else {
-  setStatus('Set the Worker URL (or use ?worker=…) to auto-load, or drop / open a .zip / .json file.', true);
-}
+loadEd269().catch((e) =>
+  setStatus(`ED-269 auto-load failed (${e.message}). Drop a .zip/.json or click "Open file…".`, true));
 loadAirzones(); // 2nd layer, independent of the ED-269 source
 </script>
 </body>

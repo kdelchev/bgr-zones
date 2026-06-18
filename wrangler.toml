@@ -1,9 +1,0 @@
-name = "bgr-zones"
-main = "worker.js"
-compatibility_date = "2026-06-01"
-
-# Deploy:
-#   npx wrangler login      # once, authorises wrangler with your Cloudflare account
-#   npx wrangler deploy     # publishes to https://bgr-zones.<your-subdomain>.workers.dev
-# Local dev:
-#   npx wrangler dev        # serves on http://localhost:8787

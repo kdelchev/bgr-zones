@@ -12,8 +12,10 @@
   integrity="sha384-DT0Ls0mO7JmjTnT+oBuMhEJzYJO1zUqzuuMXNdnOmOQRIpN2BgSjvBV/j50NngIT" crossorigin="anonymous"></script>
 <style>
   html, body { margin: 0; height: 100%; font: 14px/1.4 system-ui, sans-serif; }
+  body { display: flex; flex-direction: column; }
   #bar {
-    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    flex: 0 0 auto;
+    display: flex; align-items: center; gap: 8px 12px; flex-wrap: wrap;
     padding: 8px 12px; background: #1f2937; color: #fff; box-shadow: 0 1px 4px #0005;
   }
   #bar b { font-size: 15px; }
@@ -25,9 +27,9 @@
   }
   #bar button:hover, #bar label.btn:hover { background: #4b5563; }
   #bar a { color: #93c5fd; }
-  #map { height: calc(100% - 49px); }
+  #map { flex: 1 1 auto; min-height: 0; }
   #drophint {
-    position: absolute; inset: 49px 0 0 0; display: none; z-index: 1000;
+    position: fixed; inset: 0; display: none; z-index: 1000;
     align-items: center; justify-content: center; pointer-events: none;
     background: #1f2937cc; color: #fff; font-size: 20px;
   }
@@ -35,11 +37,36 @@
   .legend { background: #fff; padding: 8px 10px; border-radius: 6px; box-shadow: 0 1px 4px #0003; }
   .legend b { display: block; margin-bottom: 4px; }
   .legend .warn { color: #b45309; margin-top: 4px; font-size: 12px; }
+
+  /* Collapsible layers/legend control: a compact toggle that reveals the panel. */
+  .layerctl.legend { padding: 0; }
+  .layerctl-toggle {
+    display: flex; align-items: center; gap: 6px; width: 100%;
+    background: #fff; border: 0; border-radius: 6px; cursor: pointer;
+    font: inherit; color: #1f2937; padding: 7px 10px;
+  }
+  .layerctl-toggle.open { border-bottom: 1px solid #e5e7eb; border-radius: 6px 6px 0 0; }
+  .layerctl-toggle svg { display: block; }
+  .layerctl-panel { padding: 4px 10px 8px; max-height: 60vh; overflow: auto; }
+
+  /* Compact header on phones (the bar wrapped into several tall rows otherwise). */
+  @media (max-width: 640px) {
+    #bar { padding: 6px 10px; gap: 4px 8px; }
+    #bar b { font-size: 13px; }
+    #bar b .sfx { display: none; }
+    #bar #status {
+      flex-basis: 100%; min-width: 0; order: 5; font-size: 12px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    #bar button, #bar label.btn { padding: 4px 8px; font-size: 12px; }
+    #bar a { display: none; }
+    .layerctl-panel { max-height: 55vh; }
+  }
 </style>
 </head>
 <body>
 <div id="bar">
-  <b>BGR Drone Zones — ED-269</b>
+  <b>BGR Drone Zones<span class="sfx"> — ED-269</span></b>
   <span id="status">Starting…</span>
   <button id="reload" title="Re-fetch the latest file">Reload latest</button>
   <label class="btn">Open file…<input id="file" type="file" accept=".zip,.json" hidden></label>
@@ -188,6 +215,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 let activeGroups = [];
 let controlEl = null;         // custom grouped layer-toggle + legend control
+let controlOpen = !window.matchMedia("(max-width: 640px)").matches; // expanded on desktop, collapsed on phones
 let currentZones = [];        // ED-269 zones, for click hit-testing across overlapping zones
 let restrictionGroups = {};   // restriction -> LayerGroup
 let ed269Counts = {};
@@ -302,7 +330,8 @@ function controlSections() {
   ];
 }
 
-// Custom grouped control (top-right) = layer toggles + legend in one panel. Rebuilt as each layer loads.
+// Custom grouped control (top-right) = layer toggles + legend, collapsed behind a "Layers" icon.
+// Open on desktop, collapsed on phones (toggling is rare); state persists across rebuilds.
 function rebuildControl() {
   if (controlEl) map.removeControl(controlEl);
   controlEl = L.control({ position: "topright" });
@@ -310,11 +339,22 @@ function rebuildControl() {
     const root = L.DomUtil.create("div", "legend layerctl");
     L.DomEvent.disableClickPropagation(root);
     L.DomEvent.disableScrollPropagation(root);
+
+    const toggle = L.DomUtil.create("button", "layerctl-toggle", root);
+    toggle.type = "button";
+    toggle.title = "Show/hide layers & legend";
+    toggle.innerHTML =
+      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<polygon points="12 2 22 8.5 12 15 2 8.5"></polygon>' +
+      '<polyline points="2 15.5 12 22 22 15.5"></polyline></svg><span>Layers</span>';
+
+    const panel = L.DomUtil.create("div", "layerctl-panel", root);
     const sections = controlSections();
     for (const sec of sections) {
       if (!sec.items.length) continue;
       const rows = [];
-      const head = L.DomUtil.create("div", "", root);
+      const head = L.DomUtil.create("div", "", panel);
       head.style.cssText = "font-weight:600;margin:6px 0 2px";
       const master = document.createElement("input");
       master.type = "checkbox";
@@ -334,7 +374,7 @@ function rebuildControl() {
       });
       head.append(master, document.createTextNode(sec.title));
       for (const it of sec.items) {
-        const row = L.DomUtil.create("label", "", root);
+        const row = L.DomUtil.create("label", "", panel);
         row.style.cssText = "display:block;margin-left:2px;cursor:pointer";
         const cb = document.createElement("input");
         cb.type = "checkbox";
@@ -352,11 +392,18 @@ function rebuildControl() {
       syncMaster();
     }
     if (ed269Meta && (ed269Meta.corrected.length || ed269Meta.outliers.length)) {
-      const w = L.DomUtil.create("div", "warn", root);
+      const w = L.DomUtil.create("div", "warn", panel);
       if (ed269Meta.corrected.length) w.append(`Fixed transposition: ${ed269Meta.corrected.join(", ")}`, document.createElement("br"));
       if (ed269Meta.outliers.length) w.append(`Out-of-region (verify): ${ed269Meta.outliers.join(", ")}`);
     }
-    if (!sections.some((s) => s.items.length)) root.textContent = "Loading…";
+    if (!sections.some((s) => s.items.length)) panel.textContent = "Loading…";
+
+    const applyOpen = () => {
+      panel.style.display = controlOpen ? "block" : "none";
+      toggle.classList.toggle("open", controlOpen);
+    };
+    toggle.addEventListener("click", () => { controlOpen = !controlOpen; applyOpen(); });
+    applyOpen();
     return root;
   };
   controlEl.addTo(map);

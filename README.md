@@ -30,6 +30,8 @@ the static ED-269 file.
 - **Grouped layer control** (doubles as the legend) with two sections — *CAA ED‑269* and *CAA airzones* —
   each with a master on/off plus per-category toggles and counts.
 - Click-for-metadata popups; clicking an overlap lists **every** zone under the cursor (across both layers).
+- **Locate me** (bottom-right): uses the browser Geolocation API to mark your position + accuracy circle
+  and zoom to it — handy for checking the zones around you on mobile (needs HTTPS or `localhost`).
 - Auto-fixes a known lat/lon **transposition** (zone `0000502`) and flags an out-of-region **outlier**
   (zone `0001133`) without moving it.
 - **Custom files:** drag/drop or open any ED-269 `.zip`/`.json` downloaded from

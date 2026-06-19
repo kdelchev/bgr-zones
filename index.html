@@ -49,6 +49,18 @@
   .layerctl-toggle svg { display: block; }
   .layerctl-panel { padding: 4px 10px 8px; max-height: 60vh; overflow: auto; }
 
+  /* Bottom-right "locate me" control. */
+  .locate-ctl button {
+    width: 40px; height: 40px; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #fff; border: 0; border-radius: 6px; box-shadow: 0 1px 4px #0003;
+    color: #1f2937; cursor: pointer;
+  }
+  .locate-ctl button:hover { background: #f3f4f6; }
+  .locate-ctl button.locating { color: #2563eb; }
+  .locate-ctl button.locating svg { animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
   /* Compact header on phones (the bar wrapped into several tall rows otherwise). */
   @media (max-width: 640px) {
     #bar { padding: 6px 10px; gap: 4px 8px; }
@@ -213,6 +225,53 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19, attribution: "&copy; OpenStreetMap contributors",
 }).addTo(map);
 
+// Bottom-right "locate me" control: browser Geolocation → dot + accuracy circle, zoom to that area.
+function addLocateControl() {
+  let locating = false;
+  let btn = null;
+  const ctl = L.control({ position: "bottomright" });
+  ctl.onAdd = () => {
+    const root = L.DomUtil.create("div", "locate-ctl");
+    L.DomEvent.disableClickPropagation(root);
+    btn = L.DomUtil.create("button", "", root);
+    btn.type = "button";
+    btn.title = "Show my location";
+    btn.setAttribute("aria-label", "Show my location");
+    btn.innerHTML =
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<circle cx="12" cy="12" r="7"></circle>' +
+      '<circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"></circle>' +
+      '<line x1="12" y1="1" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="23"></line>' +
+      '<line x1="1" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="23" y2="12"></line></svg>';
+    btn.addEventListener("click", () => {
+      if (locating) return;
+      locating = true;
+      btn.classList.add("locating");
+      setStatus("Locating…");
+      map.locate({ setView: false, maxZoom: 16, enableHighAccuracy: true, timeout: 10000 });
+    });
+    return root;
+  };
+  ctl.addTo(map);
+
+  const done = () => { locating = false; if (btn) btn.classList.remove("locating"); };
+  map.on("locationfound", (e) => {
+    if (locationLayer) map.removeLayer(locationLayer);
+    locationLayer = L.featureGroup([
+      L.circle(e.latlng, { radius: e.accuracy, color: "#2563eb", weight: 1, fillColor: "#3b82f6", fillOpacity: 0.15 }),
+      L.circleMarker(e.latlng, { radius: 6, color: "#fff", weight: 2, fillColor: "#2563eb", fillOpacity: 1 }),
+    ]).addTo(map);
+    map.fitBounds(e.bounds, { maxZoom: 16, padding: [20, 20] });
+    setStatus(`Your location — ±${Math.round(e.accuracy)} m`, false);
+    done();
+  });
+  map.on("locationerror", (e) => {
+    setStatus(`Location unavailable: ${e.message}`, true);
+    done();
+  });
+}
+
 let activeGroups = [];
 let controlEl = null;         // custom grouped layer-toggle + legend control
 let controlOpen = !window.matchMedia("(max-width: 640px)").matches; // expanded on desktop, collapsed on phones
@@ -225,6 +284,7 @@ let airzoneLines = [];        // CAA airzone LINEs (own popups)
 let airzoneGroups = {};       // type-key -> LayerGroup (one per airzone type)
 let airzoneCounts = {};       // type-key -> count
 const airzoneTotal = () => Object.values(airzoneCounts).reduce((a, b) => a + b, 0);
+let locationLayer = null;     // user's geolocation dot + accuracy circle (own featureGroup, not toggleable)
 
 function setStatus(text, isError) {
   document.getElementById("status").textContent = text;
@@ -492,6 +552,7 @@ window.addEventListener("drop", (e) => {
 loadEd269().catch((e) =>
   setStatus(`ED-269 auto-load failed (${e.message}). Drop a .zip/.json or click "Open file…".`, true));
 loadAirzones(); // 2nd layer, independent of the ED-269 source
+addLocateControl(); // bottom-right "locate me" (browser Geolocation)
 </script>
 </body>
 </html>

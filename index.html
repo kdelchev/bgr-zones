@@ -49,17 +49,22 @@
   .layerctl-toggle svg { display: block; }
   .layerctl-panel { padding: 4px 10px 8px; max-height: 60vh; overflow: auto; }
 
-  /* Bottom-right "locate me" control. */
-  .locate-ctl button {
+  /* Round white map buttons: bottom-right "locate me" + top-left bar toggle. */
+  .locate-ctl button, .bartoggle-ctl button {
     width: 40px; height: 40px; padding: 0;
     display: flex; align-items: center; justify-content: center;
     background: #fff; border: 0; border-radius: 6px; box-shadow: 0 1px 4px #0003;
     color: #1f2937; cursor: pointer;
   }
-  .locate-ctl button:hover { background: #f3f4f6; }
+  .locate-ctl button:hover, .bartoggle-ctl button:hover { background: #f3f4f6; }
   .locate-ctl button.locating { color: #2563eb; }
   .locate-ctl button.locating svg { animation: spin 1s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Collapse the whole top bar behind the toggle when vertical space is tight (e.g. landscape phones). */
+  .bartoggle-ctl { display: none; }
+  body.bar-collapsed #bar { display: none; }
+  @media (max-height: 500px) { .bartoggle-ctl { display: block; } }
 
   /* Compact header on phones (the bar wrapped into several tall rows otherwise). */
   @media (max-width: 640px) {
@@ -219,11 +224,40 @@ function popupHtml(z) {
 }
 
 // --- Map setup ---
+// Collapse the top bar when the viewport is short (landscape phones); a toggle button reveals it.
+const shortViewport = window.matchMedia("(max-height: 500px)");
+if (shortViewport.matches) document.body.classList.add("bar-collapsed");
 // preferCanvas: draw the ~1,183 vectors on a canvas (much faster than SVG for this many).
 const map = L.map("map", { preferCanvas: true }).setView([42.7, 25.3], 7);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19, attribution: "&copy; OpenStreetMap contributors",
 }).addTo(map);
+
+// Top-left toggle to show/hide the top bar (used when it's collapsed on short/landscape viewports).
+function addBarToggle() {
+  const ctl = L.control({ position: "topleft" });
+  ctl.onAdd = () => {
+    const root = L.DomUtil.create("div", "bartoggle-ctl");
+    L.DomEvent.disableClickPropagation(root);
+    const btn = L.DomUtil.create("button", "", root);
+    btn.type = "button";
+    btn.title = "Show/hide the top bar";
+    btn.setAttribute("aria-label", "Show/hide the top bar");
+    btn.innerHTML =
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+      'stroke-width="2" stroke-linecap="round" aria-hidden="true">' +
+      '<line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line>' +
+      '<line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+    btn.addEventListener("click", () => { document.body.classList.toggle("bar-collapsed"); map.invalidateSize(); });
+    return root;
+  };
+  ctl.addTo(map);
+}
+// Re-apply the bar state when the viewport crosses the short-height threshold (e.g. rotate to/from landscape).
+shortViewport.addEventListener("change", () => {
+  document.body.classList.toggle("bar-collapsed", shortViewport.matches);
+  map.invalidateSize();
+});
 
 // Bottom-right "locate me" control: browser Geolocation → dot + accuracy circle, zoom to that area.
 function addLocateControl() {
@@ -553,6 +587,7 @@ loadEd269().catch((e) =>
   setStatus(`ED-269 auto-load failed (${e.message}). Drop a .zip/.json or click "Open file…".`, true));
 loadAirzones(); // 2nd layer, independent of the ED-269 source
 addLocateControl(); // bottom-right "locate me" (browser Geolocation)
+addBarToggle(); // top-left show/hide for the top bar (auto-collapses on short/landscape viewports)
 </script>
 </body>
 </html>
